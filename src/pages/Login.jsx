@@ -47,7 +47,7 @@ const Login = () => {
                 <Row className='h-screen'>
                     <Col lg='8' className='relative'>
                         <img className='absolute scale-90 -translate-y-8 blur-2xl' src={bgLight} alt=''/>
-                        <img className='absolute bg-contain scale-[0.7] -translate-y-8' src={loginWoman} alt=''/>
+                        <img className='max-[990px]:hidden absolute bg-contain scale-[0.7] -translate-y-8' src={loginWoman} alt=''/>
                         
                     </Col>
                         <Col lg='4' className='mt-24 space-y-10 px-3 '>
