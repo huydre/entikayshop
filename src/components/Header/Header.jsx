@@ -36,6 +36,7 @@ const Header = () => {
         signOut(auth).then(() => {
             toast.success("Đăng xuất thành công")
             navigate('/home')
+            navigate(0)
         }).catch(err => {
             toast.error(err.message)
         })
@@ -125,9 +126,9 @@ const Header = () => {
                                 </div>
                                 :
                                 <div className='p-3 flex flex-col text-sm font-medium'>
-                                    <a href= '/login'>Đăng nhập</a>
+                                    <Link to= '/login'>Đăng nhập</Link>
                                     <div className='h-[1px] w-full bg-gray-200 my-2' />
-                                    <a href= '/signup'>Đăng kí</a>
+                                    <Link to= '/signup'>Đăng kí</Link>
                                 </div>
                                 
                             }
@@ -160,27 +161,20 @@ const Header = () => {
                                                 :
                                                 <div>
                                                      <div className='w-2/3'>
-                                                        <button className='bg-black text-sm py-3 rounded-lg w-4/6 text-white font-semibold focus:bg-slate-400'><a href='/login'>Đăng nhập</a></button>
+                                                        <button onClick={()=>{navigate('/login')}} className='bg-black text-sm py-3 rounded-lg w-4/6 text-white font-semibold focus:bg-slate-400'>Đăng nhập</button>
                                                      </div>
                                                 </div>
                                             }
                                         </div>
                                         <ul className=''>
-                                            <li>
-                                                <a href='/home' className='group relative before:absolute before:inset-x-0 before:bottom-0 before:h-2 before:bg-cyan-100'>
+                                                {/* <a href='/home' className='group relative before:absolute before:inset-x-0 before:bottom-0 before:h-2 before:bg-cyan-100'>
                                                     <span className='relative text-lg font-semibold'>Trang chủ</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href='/shop' className='group relative before:absolute before:inset-x-0 before:bottom-0 before:h-2 before:bg-cyan-100'>
-                                                    <span className='relative text-lg font-semibold'>Tất cả sản phẩm</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href='/cart' className='group relative before:absolute before:inset-x-0 before:bottom-0 before:h-2 before:bg-cyan-100'>
-                                                    <span className='relative text-lg font-semibold'>Giỏ hàng</span>
-                                                </a>
-                                            </li>
+                                                </a> */}
+                                                {nav__links.map((item) => (
+                                                    <li class='text-[var(--primary-color)] font-medium'>
+                                                        <NavLink className={(navClass) => navClass.isActive ? 'font-bold text-lg' : ''} to={item.path}>{item.display}</NavLink>
+                                                    </li>
+                                                ))}
                                         </ul>
                                     </div>
                                 </div>

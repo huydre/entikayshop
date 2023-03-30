@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import Helmet from '../components/Helmet/Helmet';
 import { Container, Row, Col, Form, FormGroup } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import { Button, Input, useInput } from '@nextui-org/react';
+import { Button, Input, useInput, Loading } from '@nextui-org/react';
 import loginWoman from '../assets/images/login-woman.png';
 import bgLight from '../assets/images/light-bg.png'
 import { signInWithEmailAndPassword } from 'firebase/auth';
@@ -41,8 +41,10 @@ const Login = () => {
         <Helmet title='Login'>
             <Container>
                 { loading ?
-                <Row>
-                    <Col><h5>Loading....</h5></Col>
+                <Row className='flex justify-center'>
+                    <Col className='flex justify-center'>
+                        <Loading>Loading</Loading>
+                    </Col>
                 </Row> :
                 <Row className='h-screen'>
                     <Col lg='8' className='relative'>
