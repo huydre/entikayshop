@@ -48,7 +48,7 @@ const Header = () => {
                 {/* logo */}
                 <div class='flex items-center gap-[8px] cursor-pointer'>
                     <div>
-                        <h1 class='font-bold text-[1.2rem] text-[var(--primary-color)]'>Entikay</h1>
+                        <h1 onClick={()=>{navigate('/')}} class='font-bold text-[1.2rem] text-[var(--primary-color)]'>Entikay</h1>
                     </div>
                 {/* navigation */}
                 </div>
@@ -125,9 +125,9 @@ const Header = () => {
                                 </div>
                                 :
                                 <div className='p-3 flex flex-col text-sm font-medium'>
-                                    <Link to= '/login'>Đăng nhập</Link>
+                                    <a href= '/login'>Đăng nhập</a>
                                     <div className='h-[1px] w-full bg-gray-200 my-2' />
-                                    <Link to= '/signup'>Đăng kí</Link>
+                                    <a href= '/signup'>Đăng kí</a>
                                 </div>
                                 
                             }
@@ -160,24 +160,24 @@ const Header = () => {
                                                 :
                                                 <div>
                                                      <div className='w-2/3'>
-                                                        <button onClick={() => {navigate('/login')}} className='bg-black text-sm py-3 rounded-lg w-4/6 text-white font-semibold focus:bg-slate-400'>Đăng nhập</button>
+                                                        <button className='bg-black text-sm py-3 rounded-lg w-4/6 text-white font-semibold focus:bg-slate-400'><a href='/login'>Đăng nhập</a></button>
                                                      </div>
                                                 </div>
                                             }
                                         </div>
                                         <ul className=''>
                                             <li>
-                                                <a href='#' className='group relative before:absolute before:inset-x-0 before:bottom-0 before:h-2 before:bg-cyan-100'>
+                                                <a href='/home' className='group relative before:absolute before:inset-x-0 before:bottom-0 before:h-2 before:bg-cyan-100'>
                                                     <span className='relative text-lg font-semibold'>Trang chủ</span>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href='#' className='group relative before:absolute before:inset-x-0 before:bottom-0 before:h-2 before:bg-cyan-100'>
+                                                <a href='/shop' className='group relative before:absolute before:inset-x-0 before:bottom-0 before:h-2 before:bg-cyan-100'>
                                                     <span className='relative text-lg font-semibold'>Tất cả sản phẩm</span>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href='#' className='group relative before:absolute before:inset-x-0 before:bottom-0 before:h-2 before:bg-cyan-100'>
+                                                <a href='/cart' className='group relative before:absolute before:inset-x-0 before:bottom-0 before:h-2 before:bg-cyan-100'>
                                                     <span className='relative text-lg font-semibold'>Giỏ hàng</span>
                                                 </a>
                                             </li>

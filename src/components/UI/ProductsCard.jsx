@@ -23,12 +23,13 @@ const ProductsCard = ({item}) => {
     // }
 
     return (
-        <Col lg='3' md='4'>
+        <Col lg='3' md='4' className='flex justify-center'>
             {/* Products items */}
-            <div className='cursor-pointer mb-2'>
+            <div className='cursor-pointer mb-2 max-w-[300px]'>
+                <div>
                 {/* Products img */}
                 <div>
-                    <motion.img whileHover={{scale: 0.9}} className='rounded-xl bg-cover h-[136px] w-[287px]' src={item.imgUrl} alt ='' />
+                    <motion.img whileHover={{scale: 0.9}} className='rounded-xl bg-cover bg-center bg-no-repeat bg-fixed h-[136px] w-[287px] w-full' src={item.imgUrl} alt ='' />
                 </div>
                 <div class='p-2'>
                     <h3 className='text-md font-medium mt-[15px] hover:text-inherit'><Link to={`/shop/${item.id}`}>{item.productName}</Link></h3>
@@ -45,6 +46,7 @@ const ProductsCard = ({item}) => {
                         <div className='line-through font-semibold text-gray-400 text-sm'>{Number(item.price*2).toLocaleString("en")}đ</div>
                         <div className='font-semibold bg-red-500 text-white p-1 rounded-md text-xs'>-50%</div>
                     </div>
+                </div>
                 </div>
             </div>
         </Col>
