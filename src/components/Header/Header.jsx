@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import useAuth from '../../custom-hooks/useAuth';
 import { Link } from 'react-router-dom';
-import { Popover, Switch, User } from '@nextui-org/react';
+import { Popover, Switch, User, Button, Avatar } from '@nextui-org/react';
 import { signOut } from 'firebase/auth';
 import { auth } from '../../firebase.config';
 import { toast } from 'react-toastify';
@@ -48,7 +48,7 @@ const Header = () => {
                 {/* logo */}
                 <div class='flex items-center gap-[8px] cursor-pointer'>
                     <div>
-                        <h1 class='font-bold text-[1.2rem] text-[var(--primary-color)]'>Entikay__</h1>
+                        <h1 class='font-bold text-[1.2rem] text-[var(--primary-color)]'>Entikay</h1>
                     </div>
                 {/* navigation */}
                 </div>
@@ -79,7 +79,8 @@ const Header = () => {
                         <span class='absolute w-4 h-4 flex items-center justify-center top-[50%] right-[0%] content-none rounded-[50px] text-white bg-[var(--primary-color)] text-[0.7rem] font-semibold z-10' >{totalQuantity}</span>
                     </span>
                     {/* profile */}
-                    <Popover triggerType='menu'>
+                    <div className='max-[768px]:hidden flex items-center'>
+                    <Popover  triggerType='menu'>
                     {/* user icon */}
                         <Popover.Trigger>
                             <User src = {currentUser ? currentUser.photoURL : ''} />
@@ -132,13 +133,59 @@ const Header = () => {
                             }
                         </Popover.Content>
                     </Popover>
+                    </div>
                     {/* mobile menu */}
-                    <div className='hidden max-[768px]:block'>
+                    <div className='hidden max-[768px]:block z-40'>
                         <span >
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                        </svg>
+                            <div className='flex items-center justify-end border-l lg:border-l=0'>
+                                <input type="checkbox" name="hamburger" id="hamburger" class="peer" hidden/>
+                                <label for='hamburger' className='peer-checked:hamburger block relative z-20 p-6 -mr-6 cursor-pointer lg:hidden'>
+                                    <div aria-hidden='true' className='m-auto h-0.5 w-6 rounded bg-black transition duration-300' />
+                                    <div aria-hidden='true' className='m-auto mt-2 h-0.5 w-6 rounded bg-black transition duration-300' />
+                                </label>
 
+                                <div className='peer-checked:translate-x-0 flex flex-col fixed inset-0 w-[calc(100%-13rem)] translate-x-[-100%] transition duration-300 bg-white border-r shadow-xl lg:border-l-0 lg:w-auto lg:static lg:shadow-none lg:translate-x-0'>
+                                    <div className='flex flex-col h-full lg:flex-row px-6 pt-32 md:px-12'>
+                                        <div className='mb-4'>
+                                            {
+                                                currentUser ? 
+                                                <div className='flex space-x-4 items-center'>
+                                                    <Avatar size='xl' src={currentUser.photoURL} />
+                                                    <div className='flex flex-col'>
+                                                        <div className='font-bold text-lg'>{currentUser.displayName}</div>
+                                                        <div className='text-sm'>{currentUser.email}</div>
+                                                    </div>
+                                                    <div className='text-xs font-medium py-0.5 px-1 rounded-lg bg-pink-400 text-white'>Pro</div>
+                                                </div>
+                                                :
+                                                <div>
+                                                     <div className='w-2/3'>
+                                                        <button onClick={() => {navigate('/login')}} className='bg-black text-sm py-3 rounded-lg w-4/6 text-white font-semibold focus:bg-slate-400'>Đăng nhập</button>
+                                                     </div>
+                                                </div>
+                                            }
+                                        </div>
+                                        <ul className=''>
+                                            <li>
+                                                <a href='#' className='group relative before:absolute before:inset-x-0 before:bottom-0 before:h-2 before:bg-cyan-100'>
+                                                    <span className='relative text-lg font-semibold'>Trang chủ</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href='#' className='group relative before:absolute before:inset-x-0 before:bottom-0 before:h-2 before:bg-cyan-100'>
+                                                    <span className='relative text-lg font-semibold'>Tất cả sản phẩm</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href='#' className='group relative before:absolute before:inset-x-0 before:bottom-0 before:h-2 before:bg-cyan-100'>
+                                                    <span className='relative text-lg font-semibold'>Giỏ hàng</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            </div>
                         </span>
                     </div>
                 </div>

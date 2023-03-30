@@ -1,6 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .hamburger div:first-child {
+    @apply rotate-45 translate-y-1.5;
+  }
+  .hamburger div:last-child {
+    @apply -rotate-45 -translate-y-1;
+  }
+}
+
 /* google fonts */
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap");
 
