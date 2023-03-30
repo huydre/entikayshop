@@ -2,7 +2,7 @@ import React from 'react';
 import Helmet from '../components/Helmet/Helmet';
 import CommonSection from '../components/UI/CommonSection';
 import { Container, Row, Col } from 'reactstrap';
-import { Table, Avatar, Tooltip, IconButton, Input, Popover, Button } from '@nextui-org/react';
+import { Table, Avatar, Popover, Button } from '@nextui-org/react';
 import { DeleteIcon } from '../components/Icon/DeleteIcon';
 import { useDispatch, useSelector } from 'react-redux';
 import { cartActions } from '../redux/slices/cartSlice';
@@ -12,8 +12,6 @@ const Cart = () => {
     const dispath = useDispatch()
 
     const cartItem = useSelector(state => state.cart.cartItems)
-    
-    console.log(cartItem);  
 
     const deleteFromCart = (id) => {
         dispath(cartActions.deleteItem(id))

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Col, Row, Container } from 'reactstrap';
-import { Table, Tooltip, Avatar, Loading, Button, Link, Popover } from '@nextui-org/react';
+import { Table, Tooltip, Avatar, Button, Link, Popover } from '@nextui-org/react';
 import { DeleteIcon } from '../components/Icon/DeleteIcon';
 import useGetData from '../custom-hooks/useGetData';
 import { db } from '../firebase.config';
@@ -11,7 +11,7 @@ import { EditIcon } from '../components/Icon/Editcon';
 
 const AllProducts = () => {
   const navigate = useNavigate()
-  const {data:productsData, loading} = useGetData('products');
+  const {data:productsData} = useGetData('products');
 
   const deleteProduct = async(id) => {
     await deleteDoc(doc(db,'products', id))

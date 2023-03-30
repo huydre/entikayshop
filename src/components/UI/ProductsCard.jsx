@@ -2,25 +2,25 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Col } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { cartActions } from '../../redux/slices/cartSlice';
-import { toast } from 'react-toastify';
+// import { useDispatch } from 'react-redux';
+// import { cartActions } from '../../redux/slices/cartSlice';
+// import { toast } from 'react-toastify';
 
 const ProductsCard = ({item}) => {
 
-    const dispath = useDispatch()
+    // const dispath = useDispatch()
 
-    const addToCart = () => {
-        dispath(cartActions.addItem({
-            id: item.id,
-            productName: item.productName,
-            price: item.price,
-            imgUrl: item.imgUrl,
-        }));
+    // const addToCart = () => {
+    //     dispath(cartActions.addItem({
+    //         id: item.id,
+    //         productName: item.productName,
+    //         price: item.price,
+    //         imgUrl: item.imgUrl,
+    //     }));
 
-        toast.success('Product added succesfully!')
+    //     toast.success('Product added succesfully!')
 
-    }
+    // }
 
     return (
         <Col lg='3' md='4'>
@@ -34,7 +34,7 @@ const ProductsCard = ({item}) => {
                     <h3 className='text-md font-medium mt-[15px] hover:text-inherit'><Link to={`/shop/${item.id}`}>{item.productName}</Link></h3>
                 </div>
                 {/* product card bottom */}
-                <div className='flex items-center space-x-2 p-2 inline-block'>
+                <div className='flex items-center space-x-2 p-2'>
                     <span class='text-lg font-semibold'>{Number(item.price).toLocaleString("en")}đ</span>
                     {/* <motion.span whileTap={{scale: 1.2}} onClick={addToCart} className='p-2 bg-black text-white rounded-full'>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">

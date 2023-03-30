@@ -1,4 +1,4 @@
-import React, {useRef, useEffect, useState} from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import useAuth from '../../custom-hooks/useAuth';
@@ -123,7 +123,7 @@ const Header = () => {
                                     <span onClick={logout} className='pl-3 text-sm font-medium text-red-500 cursor-pointer'>Đăng xuất</span> 
                                 </div>
                                 :
-                                <div className='p-3 flex flex-col font-medium text-sm font-medium'>
+                                <div className='p-3 flex flex-col text-sm font-medium'>
                                     <Link to= '/login'>Đăng nhập</Link>
                                     <div className='h-[1px] w-full bg-gray-200 my-2' />
                                     <Link to= '/signup'>Đăng kí</Link>
