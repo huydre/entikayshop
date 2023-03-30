@@ -144,7 +144,7 @@ const Header = () => {
                                     <div aria-hidden='true' className='m-auto mt-2 h-0.5 w-6 rounded bg-black transition duration-300' />
                                 </label>
 
-                                <div className='peer-checked:translate-x-0 flex flex-col fixed inset-0 w-[calc(100%-13rem)] translate-x-[-100%] transition duration-300 bg-white border-r shadow-xl lg:border-l-0 lg:w-auto lg:static lg:shadow-none lg:translate-x-0'>
+                                <div className='peer-checked:translate-x-0 flex flex-col fixed inset-0 w-[calc(100%-4rem)] translate-x-[-100%] transition duration-300 bg-white border-r shadow-xl lg:border-l-0 lg:w-auto lg:static lg:shadow-none lg:translate-x-0'>
                                     <div className='flex flex-col h-full lg:flex-row px-6 pt-32 md:px-12'>
                                         <div className='mb-4'>
                                             {
