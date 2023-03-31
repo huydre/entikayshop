@@ -21,8 +21,6 @@ const AddProducts = () => {
   const [enterStatus, setEnterStatus] = useState('stock');
   const [loading, setLoading] = useState(false);
 
-  console.log(enterStatus)
-
   useEffect(()=> {
     return () => {
       enterProductImg && URL.revokeObjectURL(enterProductImg.preview)
