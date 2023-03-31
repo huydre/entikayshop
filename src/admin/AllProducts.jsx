@@ -87,9 +87,9 @@ const AllProducts = () => {
                     <Row>
                         <Col lg='9' className='w-full'>
                           <div className='flex justify-end pb-4'>
-                            <Button size='sm' onClick={() => {navigate('/dashboard/add-products')}} bordered auto rounded>Thêm sản phẩm</Button>
+                            <Button className='bg-black' size='sm' onClick={() => {navigate('/dashboard/add-products')}} auto rounded>Thêm sản phẩm</Button>
                           </div>
-                            <Table className='w-full'
+                            <Table className='w-full z-0'
                                     selectionMode="none">
                                 <Table.Header columns={columns}>
                                     {(column) => (

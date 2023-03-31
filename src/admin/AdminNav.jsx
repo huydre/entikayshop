@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container } from 'reactstrap'
 import useAuth from '../custom-hooks/useAuth'
-import { Navbar,Input, Avatar} from '@nextui-org/react'
+import { Navbar,Input, Avatar, Link} from '@nextui-org/react'
 import { useLocation } from 'react-router-dom'
 
 const AdminNav = () => {
@@ -30,28 +30,30 @@ const AdminNav = () => {
     ]
 
   return (
-    <header>
+    <div>
         <div>
             <Container>
-                <Navbar isBordered variant='floating'>
+                <Navbar variant='sticky' isBordered>
+                    <Navbar.Toggle showIn='sm' />
                     <Navbar.Brand>
                         {/* logo */}
                         <div class='flex items-center gap-[8px] cursor-pointer'>
                             <div>
-                                <h1 class='font-bold text-[1.2rem] text-[var(--primary-color)]'>Entikay__</h1>
+                                <h1 class='font-bold text-[1.2rem] text-[var(--primary-color)]'>Entikay</h1>
                             </div>
                         </div>
                     </Navbar.Brand>
 
-                    <Navbar.Content variant='underline-rounded'>
+                    <Navbar.Content hideIn='sm' variant='underline-rounded'>
                     {
                         admin__nav.map(item => (
                             <Navbar.Link isActive={location.pathname === item.path ? true : false} href={item.path}>{item.display}</Navbar.Link>
                         ) )
                     }
                     </Navbar.Content>
+                    
                     <Navbar.Content>
-                        <Navbar.Item>
+                        <Navbar.Item hideIn='sm'>
                             {/* Search box */}
                             <Input 
                                 clearable
@@ -88,14 +90,34 @@ const AdminNav = () => {
                                 </svg>
                             </span>
                         </Navbar.Item>
-                        <Navbar.Item>
+                        <Navbar.Item hideIn='sm'>
                             <Avatar color='gradient' src={currentUser && currentUser.photoURL} size='md' bordered />
                         </Navbar.Item>
                     </Navbar.Content>
+                    <Navbar.Collapse className='bg-white'>
+                        <Navbar.CollapseItem>
+                            <div className='flex space-x-4 items-center'>
+                                <Avatar size='lg' src={currentUser.photoURL} />
+                                <div className='flex flex-col'>
+                                    <div className='font-bold text-lg'>{currentUser.displayName}</div>
+                                    <div className='text-sm'>{currentUser.email}</div>
+                                </div>
+                            </div>
+                        </Navbar.CollapseItem>
+                        {
+                            admin__nav.map((item, index) => (
+                                <Navbar.CollapseItem key={item} isActive={location.pathname === item.path ? true : false} >
+                                    <Link className='text-black min-w-full' href={item.path}>
+                                        {item.display}
+                                    </Link>
+                                </Navbar.CollapseItem>
+                            ) )
+                        }
+                    </Navbar.Collapse>
                 </Navbar>
             </Container>
         </div>
-    </header>
+    </div>
   )
 }
 

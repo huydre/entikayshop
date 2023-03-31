@@ -55,7 +55,7 @@ const Users = () => {
                 <Container>
                     <Row>
                         <Col lg='9' className='w-full'>
-                            <Table className='w-full'
+                            <Table className='w-full z-0'
                                     selectionMode="none">
                                 <Table.Header columns={columns}>
                                     {(column) => (
