@@ -12,7 +12,6 @@ import {auth} from '../firebase.config'
 import { storage } from '../firebase.config';
 import { db } from '../firebase.config';
 import { toast } from 'react-toastify';
-import { async } from '@firebase/util';
 import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
@@ -26,6 +25,7 @@ const Signup = () => {
     const [file, setFile] = useState(null);
     const [loading, setLoading] = useState(false);
 
+    console.log(file)
     const signups = async(e) => {
         e.preventDefault()
         setLoading(true)
@@ -52,6 +52,8 @@ const Signup = () => {
                         uid: user.uid,
                         displayName: username,
                         email,
+                        phonenumber,
+                        createdDate: Date.now(),
                         photoURL: downloadUrl,
                     });
                 });
@@ -87,18 +89,18 @@ const Signup = () => {
                             <h3 className='font-bold text-xl leading-8'>Chúng tôi rất vui vì bạn đã chọn Entikay Shop!</h3>
                             <Form className='space-y-6' onSubmit={signups}>
                                 <FormGroup >
-                                    <Input label='Tên tài khoản' aria-label='username' onChange={(e)=> {setUsername(e.target.value)}} fullWidth clearable value={username}  placeholder='Nhập tên tài khoản'/>
+                                    <Input label='Tên tài khoản' aria-label='username' onChange={(e)=> {setUsername(e.target.value)}} fullWidth clearable   placeholder='Nhập tên tài khoản'/>
                                 </FormGroup>
                                 <FormGroup >
-                                    <Input label='Số điện thoại' aria-label='phonenumber' onChange={(e)=> {setPhonenumber(e.target.value)}} fullWidth clearable value={phonenumber}  placeholder='Nhập số điện thoại'/>
+                                    <Input label='Số điện thoại' aria-label='phonenumber' onChange={(e)=> {setPhonenumber(e.target.value)}} fullWidth clearable   placeholder='Nhập số điện thoại'/>
                                 </FormGroup>
                                 <FormGroup >
-                                    <Input label='Email' aria-label='email' onChange={(e)=> {setEmail(e.target.value)}} fullWidth clearable  type='email' value={email}  placeholder='Nhập email của bạn'/>
+                                    <Input label='Email' aria-label='email' onChange={(e)=> {setEmail(e.target.value)}} fullWidth clearable  type='email' placeholder='Nhập email của bạn'/>
                                 </FormGroup>
                                 <FormGroup>
-                                    <Input.Password label='Mật khẩu' value={password} onChange={(e) => {setPassword(e.target.value)}} aria-label='password' fullWidth clearable type='password'  placeholder='Mật khẩu'/>
+                                    <Input.Password label='Mật khẩu' onChange={(e) => {setPassword(e.target.value)}} aria-label='password' fullWidth clearable type='password'  placeholder='Mật khẩu'/>
                                 </FormGroup>
-                                <input type='file' onChange={(e) => {setFile(e.target.files[0])}}/>
+                                <input required type='file' onChange={(e) => {setFile(e.target.files[0])}}/>
                                 <div>
                                     <button type='submit' className='bg-black text-sm py-3 shadow-lg rounded-lg w-full text-white font-semibold focus:bg-slate-400'>Đăng kí</button>
                                 </div>

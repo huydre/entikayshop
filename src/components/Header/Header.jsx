@@ -126,9 +126,9 @@ const Header = () => {
                                 </div>
                                 :
                                 <div className='p-3 flex flex-col text-sm font-medium'>
-                                    <Link to= '/login'>Đăng nhập</Link>
+                                    <a href= '/login'>Đăng nhập</a>
                                     <div className='h-[1px] w-full bg-gray-200 my-2' />
-                                    <Link to= '/signup'>Đăng kí</Link>
+                                    <a href= '/signup'>Đăng kí</a>
                                 </div>
                                 
                             }
@@ -156,7 +156,6 @@ const Header = () => {
                                                         <div className='font-bold text-lg'>{currentUser.displayName}</div>
                                                         <div className='text-sm'>{currentUser.email}</div>
                                                     </div>
-                                                    <div className='text-xs font-medium py-0.5 px-1 rounded-lg bg-pink-400 text-white'>Pro</div>
                                                 </div>
                                                 :
                                                 <div>

@@ -58,10 +58,10 @@ const Login = () => {
                             <p className='text-sm pb-6'>Đăng nhập đê theo dõi đơn hàng, lưu danh sách sản phẩm ưu đãi và nhận nhiều ưu đãi hấp dẫn</p>
                             <Form className='space-y-10' onSubmit={singIn}>
                                 <FormGroup >
-                                    <Input aria-label='email' onChange={(e)=> {setEmail(e.target.value)}} fullWidth clearable type='email' value={email}  placeholder='Email của bạn'/>
+                                    <Input aria-label='email' onChange={(e)=> {setEmail(e.target.value)}} fullWidth clearable type='email' placeholder='Email của bạn'/>
                                 </FormGroup>
                                 <FormGroup>
-                                    <Input.Password value={password} onChange={(e) => {setPassword(e.target.value)}} aria-label='password' fullWidth clearable color='warning' type='password'  placeholder='Mật khẩu'/>
+                                    <Input.Password onChange={(e) => {setPassword(e.target.value)}} aria-label='password' fullWidth clearable color='warning' type='password'  placeholder='Mật khẩu'/>
                                 </FormGroup>
                                 <div>
                                 <button type='submit' className='bg-black text-sm py-3 shadow-lg rounded-lg w-full text-white font-semibold'>Đăng nhập</button>
