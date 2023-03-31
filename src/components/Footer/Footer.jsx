@@ -4,7 +4,7 @@ import { Container, Row, Col } from 'reactstrap';
 const Footer = () => {
     return (
         <footer className='bg-[#F3F4F6]'>
-            <Container className='px-0'>
+            <Container className='px-0 py-8'>
                 <Row>
                     <Col lg ='4'>
                         <div className='flex items-center gap-[8px] cursor-pointer my-3'>
@@ -13,7 +13,6 @@ const Footer = () => {
                             </div>
                             
                         </div>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis ipsum impedit, maiores sapiente hic nobis eaque numquam iure quidem animi!</p>
                     </Col>
                     <Col lg ='3'>
                         <h4 className='text-lg font-semibold my-3'>ABOUT US</h4>
