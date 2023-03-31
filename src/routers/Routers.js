@@ -13,6 +13,7 @@ import AllProducts from '../admin/AllProducts';
 import Dashboard from '../admin/Dashboard';
 import Users from '../admin/Users';
 import EditProduct from '../admin/EditProduct';
+import UserInfomation from '../pages/UserInfomation';
 
 function Routers() {
   return (
@@ -22,6 +23,7 @@ function Routers() {
       <Route path="shop" element={<Shop />} />
       <Route path="shop/:id" element={<ProductDetails />} />
       <Route path="cart" element={<Cart />} />
+      <Route path="user-infomation/" element={<UserInfomation />} />
 
       <Route path='/*' element={<ProtectedRoute/>} >
         <Route path='checkout' element={<Checkout/>} />  
