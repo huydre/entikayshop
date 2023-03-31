@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import useAuth from '../../custom-hooks/useAuth';
@@ -30,6 +30,8 @@ const Header = () => {
     const navigate = useNavigate()
     const totalQuantity = useSelector(state => state.cart.totalQuantity);
     const {currentUser} = useAuth()
+
+    const [open,setOpen] = useState('false');
 
     const logout = () => {
 
@@ -84,7 +86,7 @@ const Header = () => {
                     <Popover  triggerType='menu'>
                     {/* user icon */}
                         <Popover.Trigger>
-                            <User src = {currentUser ? currentUser.photoURL : ''} />
+                            <Avatar as='button' src = {currentUser ? currentUser.photoURL : ''} />
                         </Popover.Trigger>
                         <Popover.Content>
                             {
@@ -160,7 +162,7 @@ const Header = () => {
                                                 :
                                                 <div>
                                                      <div className='w-2/3'>
-                                                        <button onClick={()=>{navigate('/login')}} className='bg-black text-sm py-3 rounded-lg w-4/6 text-white font-semibold focus:bg-slate-400'>Đăng nhập</button>
+                                                        <button onClick={()=>{navigate('/login'); navigate(0)}} className='bg-black text-sm py-3 rounded-lg w-4/6 text-white font-semibold focus:bg-slate-400'>Đăng nhập</button>
                                                      </div>
                                                 </div>
                                             }
@@ -171,10 +173,17 @@ const Header = () => {
                                                 </a> */}
                                                 {nav__links.map((item) => (
                                                     <li class='text-[var(--primary-color)] font-medium'>
-                                                        <NavLink className={(navClass) => navClass.isActive ? 'font-bold text-lg' : ''} to={item.path}>{item.display}</NavLink>
+                                                        <a className='text-lg' href={item.path}>{item.display}</a>
                                                     </li>
                                                 ))}
                                         </ul>
+                                        {
+                                            currentUser ?
+                                            <div>
+                                                <button onClick={logout} className='bg-black text-sm py-3 rounded-lg w-4/6 text-white font-semibold focus:bg-slate-400'>Đăng xuất</button>
+                                            </div>
+                                            : <></>
+                                        }
                                     </div>
                                 </div>
 
