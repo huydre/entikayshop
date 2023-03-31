@@ -8,6 +8,7 @@ import { doc, deleteDoc } from 'firebase/firestore';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import { EditIcon } from '../components/Icon/Editcon';
+import { StyledBadge } from '../components/StyledBagde';
 
 const AllProducts = () => {
   const navigate = useNavigate()
@@ -23,6 +24,7 @@ const AllProducts = () => {
       { name: "Image", uid: "imgUrl" },
       { name: "Sản phẩm", uid: "productName" },
       { name: "Danh mục", uid: "category" },
+      { name: "Tình trạng", uid: "status" },
       { name: "Giá", uid: "price" },
       { name: "Delete", uid: "id" },
     ];
@@ -43,7 +45,11 @@ const AllProducts = () => {
               );
           case "category":
               return (
-                  <div className='text-center'>{cellValue}</div>
+                  <div>{cellValue}</div>
+              );
+            case "status":
+              return (
+                  <StyledBadge type={cellValue}>{cellValue}</StyledBadge>
               );
           case "id":
               return (
@@ -87,10 +93,10 @@ const AllProducts = () => {
                     <Row>
                         <Col lg='9' className='w-full'>
                           <div className='flex justify-end pb-4'>
-                            <Button className='bg-black' size='sm' onClick={() => {navigate('/dashboard/add-products')}} auto rounded>Thêm sản phẩm</Button>
+                            <Button className='bg-black' size='lg' onClick={() => {navigate('/dashboard/add-products')}} auto>Thêm sản phẩm</Button>
                           </div>
                             <Table className='w-full z-0'
-                                    selectionMode="none">
+                                    selectionMode='multiple'>
                                 <Table.Header columns={columns}>
                                     {(column) => (
                                         <Table.Column key={column.uid} hideHeader={column.uid === 'id' || column.uid === 'imgUrl'}>

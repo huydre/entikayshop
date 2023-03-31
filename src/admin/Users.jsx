@@ -56,7 +56,7 @@ const Users = () => {
                     <Row>
                         <Col lg='9' className='w-full'>
                             <Table className='w-full z-0'
-                                    selectionMode="none">
+                                    selectionMode='multiple'>
                                 <Table.Header columns={columns}>
                                     {(column) => (
                                         <Table.Column key={column.uid} hideHeader={column.uid === 'id' || column.uid === 'photoURL'}>
