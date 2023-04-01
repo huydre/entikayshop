@@ -44,7 +44,6 @@ const Header = () => {
         })
 
     }
-
     return (
         <div class='w-full  h-[70px] leading-[70px] sticky top-0 left-0 z-10 shadow-xl bg-white'>
             <div class='flex items-center justify-around pt-2 max-[768px]:justify-between max-[768px]:px-6'>
@@ -105,7 +104,7 @@ const Header = () => {
                                             <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
                                             </svg>
                                         </span>
-                                        <a href='/user-infomationf' className='text-sm font-medium'>Cài đặt tài khoản</a>
+                                        <a href={`/user-infomation/${currentUser.uid}`} className='text-sm font-medium'>Cài đặt tài khoản</a>
                                     </div>
 
                                     <div className='flex space-x-2 items-center pl-3 mt-3 justify-between'>

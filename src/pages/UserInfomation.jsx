@@ -1,9 +1,15 @@
 import React from 'react'
 import { Container, Row, Col } from 'reactstrap'
-import { Button, Input, Radio } from '@nextui-org/react'
-
+import { Button, Input, Radio, Tooltip } from '@nextui-org/react'
+import useAuth from '../custom-hooks/useAuth'
 
 const UserInfomation = () => {
+
+    const {currentUser} = useAuth()
+
+
+
+    console.log(currentUser)
   return (
     <div>
         <Container className='space-y-3'>
@@ -17,11 +23,11 @@ const UserInfomation = () => {
                         <div className='md:text-sm text-xs flex justify-between'>
                             <div>
                                 <div>Tên đăng nhập:</div>
-                                <div className='font-semibold'>user01</div>
+                                <div className='font-semibold'>{currentUser.displayName}</div>
                             </div>
                             <div>
                                 <div>Email:</div>
-                                <div className='font-semibold'>user01@gmail.com</div>
+                                <div className='font-semibold'>{currentUser.email}</div>
                             </div>
                             <div>
                                 <div>Ngày tham gia:</div>
@@ -46,8 +52,14 @@ const UserInfomation = () => {
                     </Col>
                     <Col lg='6'  className='p-4 space-y-4' >
                         <div className='text-md font-semibold text-gray-500 md:mt-5'>Ảnh đại diện</div>
+                        
                         <div className='flex justify-center pt-6'>
-                            <div className='bg-gray-200 h-[15rem] w-[15rem] rounded-full'></div>
+                            <Tooltip content='Chọn hình ảnh đại diện khác' color='invert'>
+                                <div onClick={()=>{document.querySelector(".input-field").click()}} className='bg-gray-200 h-[15rem] w-[15rem] rounded-full relative overflow-hidden'>
+                                    <img className='object-contain' src={currentUser.photoURL} alt=''></img>
+                                </div>
+                                <input hidden className='input-field' accept='.jpeg, .jpg, .png, .webp, .svg' type='file'/>
+                            </Tooltip>
                         </div>
                         <div className='space-y-4 pt-6'>
                             <div className='font-semibold'>Giới tính của bạn</div>
