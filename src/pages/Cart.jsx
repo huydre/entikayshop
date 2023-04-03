@@ -98,7 +98,7 @@ const Cart = () => {
                 <Container>
                     <Row>
                         <Col lg='9'>
-                            <Table className='w-full'
+                            <Table className='w-full z-0'
                                     selectionMode="none">
                                 <Table.Header columns={columns}>
                                     {(column) => (
@@ -121,7 +121,7 @@ const Cart = () => {
                             </Table>
                         </Col>
                         <Col lg='3'>
-                            <div className='shadow-md ring-1 ring-slate-900/5 rounded-xl space-y-6 text-sm py-6 px-2 flex flex-col'>
+                            <div className='shadow-md ring-1 ring-slate-900/5 rounded-xl space-y-6 text-sm py-6 px-2 flex flex-col max-[768px]:mt-6'>
                                 <div className='flex justify-between'>
                                     <div className='font-semibold'>Tổng giá trị sản phẩm</div>
                                     <div>{Number(totalAmount).toLocaleString("en")}</div>

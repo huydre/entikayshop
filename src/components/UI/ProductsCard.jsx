@@ -5,9 +5,11 @@ import { Link } from 'react-router-dom';
 // import { useDispatch } from 'react-redux';
 // import { cartActions } from '../../redux/slices/cartSlice';
 // import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 const ProductsCard = ({item}) => {
 
+    const navigate = useNavigate();
     // const dispath = useDispatch()
 
     // const addToCart = () => {
@@ -28,10 +30,10 @@ const ProductsCard = ({item}) => {
             <div className='cursor-pointer mb-2 max-w-[300px]'>
                 {/* Products img */}
                 <div>
-                    <motion.img whileHover={{scale: 0.9}} className='rounded-xl bg-cover h-[136px] w-[287px] w-full' src={item.imgUrl} alt ='' />
+                    <motion.img whi whileHover={{scale: 0.9}} className='rounded-xl bg-cover h-[136px] w-[287px] w-full' src={item.imgUrl} alt ='' />
                 </div>
                 <div class='p-2'>
-                    <h3 className='text-md font-medium mt-[15px] hover:text-inherit'><Link to={`/shop/${item.id}`}>{item.productName}</Link></h3>
+                    <h3 className='text-md font-medium mt-[15px] hover:text-inherit'><div onClick={()=> {navigate(`/shop/${item.id}`)}}>{item.productName}</div></h3>
                 </div>
                 {/* product card bottom */}
                 <div className='flex items-center space-x-2 p-2'>

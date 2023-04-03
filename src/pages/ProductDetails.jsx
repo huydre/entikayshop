@@ -42,7 +42,7 @@ const ProductDetails = () => {
             }
         }
         getProduct()
-    },[])
+    },[id])
 
 
     const addToCart = () => {

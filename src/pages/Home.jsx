@@ -32,12 +32,12 @@ const Home = () => {
                 <Row>
                     <Col lg='6' md='6'>
                         <div>
-                            <p className='text-black font-semibold'>Sản phẩm nổi bật {year}</p>
+                            <p className='text-black font-semibold bg-white rounded-2xl py-1 px-2 w-[13rem] text-center'>Sản phẩm nổi bật {year}</p>
                         </div>
                         <h2 className='my-6 text-white text-[2.5rem] font-semibold max-[992px]:text-[2rem] max-[768px]:text-[1.rem]'>Tài khoản Spotify giá siêu rẻ !</h2>
                         <p className='text-white max-[768px]:text-[1rem]'>Chúng tôi cung cấp duy nhất các tài khoản Spotify giá rẻ nhất thị trường, chính chủ ở Việt Nam. Giá chỉ từ 70.000đ 4 tháng, giúp bạn tối ưu chi phí.</p>
                         <motion.button whileTap={{scale: 1.3}} className='my-5 py-[8px] px-[20px] rounded-[5px] bg-black text-white cursor-pointer text-[1rem]'>
-                            <Link to='shop'>BUY NOW</Link>
+                            <Link to='shop'>Mua ngay!</Link>
                         </motion.button>
                     </Col>
                     <Col lg='6' md='6'>
