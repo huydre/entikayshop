@@ -6,6 +6,8 @@ import { Table, Avatar, Popover, Button } from '@nextui-org/react';
 import { DeleteIcon } from '../components/Icon/DeleteIcon';
 import { useDispatch, useSelector } from 'react-redux';
 import { cartActions } from '../redux/slices/cartSlice';
+import { Link } from 'react-router-dom';
+
 
 const Cart = () => {
 
@@ -18,7 +20,13 @@ const Cart = () => {
     const deleteFromCart = (id) => {
         dispath(cartActions.deleteItem(id))
     }
+    const increaseItem = (id) => {
+        dispath(cartActions.increaseQuantity(id))
+    }
 
+    const decreaseItem = (id) => {
+        dispath(cartActions.decreaseQuantity(id))
+    }
 
     const columns = [
         { name: "Image", uid: "imgUrl" },
@@ -36,7 +44,7 @@ const Cart = () => {
                 );
             case "productName":
                 return (
-                    <div >{cellValue}</div>
+                    <Link to={`/shop/${product.id}`} className='truncate w-[400px]'>{cellValue}</Link>
                 );
             case "price":
                 return (
@@ -44,11 +52,17 @@ const Cart = () => {
                 );
             case "quantity":
                 return (
-                    <div className='text-center'>{cellValue}</div>
+                    <div className='flex items-center space-x-2 justify-around'>
+                        <button className='bg-gray-100 h-6 w-6 text-center rounded-md font-semibold' 
+                        onClick={() => decreaseItem(product.id)}>-</button>
+                        <div className='text-center'>{cellValue}</div>
+                        <button className='bg-gray-100 h-6 w-6 text-center rounded-md font-semibold' 
+                        onClick={() => increaseItem(product.id)} >+</button>
+                    </div>
                 );
             case "id":
                 return (
-                    <div>
+                    <div className='w-[50px] flex justify-center'>
                         <Popover>
                             <Popover.Trigger>
                                 <button>
