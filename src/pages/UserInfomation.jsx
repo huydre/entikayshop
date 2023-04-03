@@ -55,7 +55,7 @@ const UserInfomation = () => {
                         
                         <div className='flex justify-center pt-6'>
                             <Tooltip content='Chọn hình ảnh đại diện khác' color='invert'>
-                                <div onClick={()=>{document.querySelector(".input-field").click()}} className='bg-gray-200 h-[15rem] w-[15rem] rounded-full relative overflow-hidden'>
+                                <div onClick={()=>{document.querySelector(".input-field").click()}} className='bg-gray-200 h-[15rem] w-[15rem] rounded-full relative overflow-hidden ring-offset-2 ring-2'>
                                     <img className='object-contain' src={currentUser.photoURL} alt=''></img>
                                 </div>
                                 <input hidden className='input-field' accept='.jpeg, .jpg, .png, .webp, .svg' type='file'/>

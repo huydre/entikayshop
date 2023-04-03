@@ -35,7 +35,7 @@ const Users = () => {
               );
           case "email":
               return (
-                  <div>{cellValue}đ</div>
+                  <div>{cellValue}</div>
               );
           case "id":
               return (

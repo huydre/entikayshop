@@ -27,7 +27,7 @@ const Dashboard = () => {
               </Card.Header>
               <Card.Body>
                 <div className='flex items-center space-x-4 justify-around'>
-                  <div className='text-2xl font-medium'>100,000,000đ</div>
+                  <div className='text-2xl font-medium'>100M đ</div>
                   <div>
                     <div className='text-green-500 text-xs flex space-x-1'>
                       <span>
@@ -133,6 +133,19 @@ const Dashboard = () => {
                 </div>
               </Card.Body>
             </Card>
+          </Col>
+        </Row>
+        <Row className='mt-6'>
+          <Card>
+            <Card.Footer className='text-lg font-semibold'>Sales Analytic</Card.Footer>
+          </Card>
+        </Row>
+        <Row>
+          <Col lg='4'>
+            
+          </Col>
+          <Col lg='8'>
+            
           </Col>
         </Row>
       </Container>

@@ -13,6 +13,8 @@ const Cart = () => {
 
     const cartItem = useSelector(state => state.cart.cartItems)
 
+    const totalAmount = useSelector(state => state.cart.totalAmount)
+
     const deleteFromCart = (id) => {
         dispath(cartActions.deleteItem(id))
     }
@@ -73,13 +75,15 @@ const Cart = () => {
         }
     };
 
+    console.log(totalAmount)
+
     return (
         <Helmet title='Cart'>
             <CommonSection title={'Giỏ hàng của tôi'}/>
             <section>
                 <Container>
                     <Row>
-                        <Col lg='9' className='w-full'>
+                        <Col lg='9'>
                             <Table className='w-full'
                                     selectionMode="none">
                                 <Table.Header columns={columns}>
@@ -102,7 +106,24 @@ const Cart = () => {
 
                             </Table>
                         </Col>
-                        <Col lg='3'></Col>
+                        <Col lg='3'>
+                            <div className='shadow-md ring-1 ring-slate-900/5 rounded-xl space-y-6 text-sm py-6 px-2 flex flex-col'>
+                                <div className='flex justify-between'>
+                                    <div className='font-semibold'>Tổng giá trị sản phẩm</div>
+                                    <div>{Number(totalAmount).toLocaleString("en")}</div>
+                                </div>
+                                <div className='flex justify-between'>
+                                    <div className='font-semibold'>Giảm giá</div>
+                                    <div>0</div>
+                                </div>
+                                <div className='my-2 h-[1px] bg-slate-200' />
+                                <div className='flex justify-between'>
+                                    <div className='font-semibold'>Tổng số tiền phải thanh toán</div>
+                                    <div className='font-semibold'>{Number(totalAmount).toLocaleString("en")}</div>
+                                </div>
+                                <button className='bg-black text-sm py-3 shadow-lg rounded-lg w-full text-white font-semibold'>Thanh toán</button>
+                            </div>
+                        </Col>
                     </Row>
                 </Container>
             </section>
