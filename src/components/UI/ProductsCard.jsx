@@ -27,15 +27,7 @@ const ProductsCard = ({item}) => {
     return (
         <Col lg='3' md='4' className='flex justify-center '>
             {/* Products items */}
-            <motion.div 
-            initial={{opacity: 0, y: 50}}
-            whileInView={{opacity: 1, y: 0, transition: {
-               type: 'spring',
-               duration: 1.25,
-               delay: 0.5
-            }}}
-            viewport={{ once: true, amount: 0.25}}
-            className='cursor-pointer mb-2 max-w-[300px]'>
+            <div className='cursor-pointer mb-2 max-w-[300px]'>
                 {/* Products img */}
                 <div>
                     <motion.img
@@ -58,7 +50,7 @@ const ProductsCard = ({item}) => {
                         <div className='font-semibold bg-red-500 text-white p-1 rounded-md text-xs'>-50%</div>
                     </div>
                 </div>
-            </motion.div>
+            </div>
         </Col>
     )
 }
