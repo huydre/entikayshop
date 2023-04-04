@@ -30,7 +30,8 @@ const ProductsCard = ({item}) => {
             <div className='cursor-pointer mb-2 max-w-[300px]'>
                 {/* Products img */}
                 <div>
-                    <motion.img whi whileHover={{scale: 0.9}} className='rounded-xl bg-cover h-[136px] w-[287px] w-full' src={item.imgUrl} alt ='' />
+                    <motion.img onClick={()=>navigate
+                    (`/shop/${item.id}`)} whileHover={{scale: 0.9}} className='rounded-xl bg-cover h-[136px] w-[287px] w-full' src={item.imgUrl} alt ='' />
                 </div>
                 <div class='p-2'>
                     <h3 className='text-md font-medium mt-[15px] hover:text-inherit'><div onClick={()=> {navigate(`/shop/${item.id}`)}}>{item.productName}</div></h3>

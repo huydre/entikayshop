@@ -95,8 +95,7 @@ const AllProducts = () => {
                           <div className='flex justify-end pb-4'>
                             <Button className='bg-black' size='lg' onClick={() => {navigate('/dashboard/add-products')}} auto>Thêm sản phẩm</Button>
                           </div>
-                            <Table className='w-full z-0'
-                                    selectionMode='multiple'>
+                            <Table className='w-full z-0'>
                                 <Table.Header columns={columns}>
                                     {(column) => (
                                         <Table.Column key={column.uid} hideHeader={column.uid === 'id' || column.uid === 'imgUrl'}>
