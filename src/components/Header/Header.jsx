@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import useAuth from '../../custom-hooks/useAuth';
 import { Link } from 'react-router-dom';
-import { Popover, Switch, User, Button, Avatar } from '@nextui-org/react';
+import { Popover, Switch, User, Button, Avatar, Dropdown } from '@nextui-org/react';
 import { signOut } from 'firebase/auth';
 import { auth } from '../../firebase.config';
 import { toast } from 'react-toastify';
@@ -82,8 +82,40 @@ const Header = () => {
                     </span>
                     {/* profile */}
                     <div className='max-[768px]:hidden flex items-center'>
-                    <Popover  triggerType='menu'>
+                        <Dropdown>
+                            <Dropdown.Trigger>
+                                <Avatar as='button' src = {currentUser ? currentUser.photoURL : ''} />
+                            </Dropdown.Trigger>
+                            {
+                                currentUser ?
+                                <Dropdown.Menu>
+                                    <Dropdown.Item key='profile'  css={{ height: "$18" }}>
+                                        <div className='font-semibold text-sm'>{currentUser.displayName}</div>
+                                        <div className='font-semibold text-sm'>{currentUser.email}</div>
+                                    </Dropdown.Item>
+                                    <Dropdown.Item key='info' withDivider>
+                                        <div onClick={()=> navigate(`/user-infomation/${currentUser.uid}`)} className='font-medium text-sm'>Thông tin tài khoản</div>
+                                    </Dropdown.Item>
+                                    <Dropdown.Item key='history' withDivider>
+                                        <div className='font-medium text-sm'>Lịch sử đơn hàng</div>
+                                    </Dropdown.Item>
+                                    <Dropdown.Item key='logout' color='error' withDivider>
+                                        <div onClick={logout} className='font-medium text-sm'>Đăng xuất</div>
+                                    </Dropdown.Item>
+                                </Dropdown.Menu>
+                                :
+                                <Dropdown.Menu>
+                                     <Dropdown.Item key='signup'>
+                                        <div onClick={()=> navigate('/signup')} className='font-medium text-sm'>Đăng kí</div>
+                                    </Dropdown.Item>
+                                    <Dropdown.Item key='login' withDivider>
+                                        <div onClick={()=> navigate('/login')} className='font-medium text-sm'>Đăng nhập</div>
+                                    </Dropdown.Item>
+                                </Dropdown.Menu>
+                            }
+                        </Dropdown>
                     {/* user icon */}
+                    {/* <Popover  triggerType='menu'>
                         <Popover.Trigger>
                             <Avatar as='button' src = {currentUser ? currentUser.photoURL : ''} />
                         </Popover.Trigger>
@@ -134,7 +166,7 @@ const Header = () => {
                                 
                             }
                         </Popover.Content>
-                    </Popover>
+                    </Popover> */}
                     </div>
                     {/* mobile menu */}
                     <div className='hidden max-[768px]:block z-40'>
@@ -172,10 +204,18 @@ const Header = () => {
                                                 </a> */}
                                                 {nav__links.map((item) => (
                                                     <li class='text-[var(--primary-color)] font-medium'>
-                                                        <a className='text-lg' href={item.path}>{item.display}</a>
+                                                        <div className='text-lg py-3' onClick={()=> {navigate(item.path); navigate(0)}}>{item.display}</div>
                                                     </li>
                                                 ))}
                                         </ul>
+                                        {
+                                            currentUser ?
+                                            <>
+                                                <div onClick={()=> {navigate(`/user-infomation/${currentUser.uid}`); navigate(0)}} className='text-[var(--primary-color)] font-medium text-lg py-3'>Thông tin tài khoản</div>
+                                                <div className='text-[var(--primary-color)] font-medium text-lg py-3'>Lịch sử đơn hàng</div>
+                                            </>
+                                            : <></>
+                                        }
                                         {
                                             currentUser ?
                                             <div>
