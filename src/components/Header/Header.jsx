@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import useAuth from '../../custom-hooks/useAuth';
-import { Link } from 'react-router-dom';
 import { Popover, Switch, User, Button, Avatar, Dropdown } from '@nextui-org/react';
 import { signOut } from 'firebase/auth';
 import { auth } from '../../firebase.config';
@@ -66,13 +65,7 @@ const Header = () => {
                 </div> 
                 {/* nav icon */}
                 <div class='flex items-center gap-[1.2rem]'>
-                    {/* fav icon */}
-                    <span class='text-[1.3rem] cursor-pointer relative'>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
-                        </svg>
-                        <span class='absolute w-4 h-4 flex items-center justify-center top-[50%] right-[0%] content-none rounded-[50px] text-white bg-[var(--primary-color)] text-[0.7rem] font-semibold z-10' >1</span>
-                    </span>
+                    
                     {/* cart icon */}
                     <span onClick={() => {navigate('/cart')}} class='cursor-pointer relative'>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -89,11 +82,7 @@ const Header = () => {
                             {
                                 currentUser ?
                                 <Dropdown.Menu>
-                                    <Dropdown.Item key='profile'  css={{ height: "$18" }}>
-                                        <div className='font-semibold text-sm'>{currentUser.displayName}</div>
-                                        <div className='font-semibold text-sm'>{currentUser.email}</div>
-                                    </Dropdown.Item>
-                                    <Dropdown.Item key='info' withDivider>
+                                    <Dropdown.Item key='info'>
                                         <div onClick={()=> navigate(`/user-infomation/${currentUser.uid}`)} className='font-medium text-sm'>Thông tin tài khoản</div>
                                     </Dropdown.Item>
                                     <Dropdown.Item key='history' withDivider>

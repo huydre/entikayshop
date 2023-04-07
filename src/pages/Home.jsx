@@ -2,15 +2,16 @@ import React from 'react';
 import { Col, Container, Row } from 'reactstrap';
 import Helmet from '../components/Helmet/Helmet';
 import heroImg from '../assets/images/hero-img-spotify.png';
-import { Link } from 'react-router-dom';
 import { motion} from 'framer-motion';
 import Services from '../components/Services';
 import ProductsList from '../components/UI/ProductsList';
 import { useEffect, useState } from 'react';
 import useGetData from '../custom-hooks/useGetData';
-
+import { useNavigate } from 'react-router-dom';
+import lightBanner from '../assets/images/light-banner.png'
 
 const Home = () => {
+    const navigate = useNavigate();
     const [trendingProducts,setTrendingProducts] = useState([]);
     const [bestSaleProducts,setBestSaleProducts] = useState([]);
     const year = new Date().getFullYear();
@@ -61,6 +62,7 @@ const Home = () => {
                         viewport={{ once: true, amount: 0.25}}
                         className='text-white max-[768px]:text-[1rem]'>Chúng tôi cung cấp duy nhất các tài khoản Spotify giá rẻ nhất thị trường, chính chủ ở Việt Nam. Giá chỉ từ 70.000đ 4 tháng, giúp bạn tối ưu chi phí.</motion.p>
                         <motion.button
+                        onClick={()=> navigate('/shop')}
                         initial={{opacity: 0, y: 50}}
                         whileInView={{opacity: 1, y: 0, transition: {
                            type: 'spring',
@@ -68,8 +70,7 @@ const Home = () => {
                            delay: 0.5
                         }}}
                         viewport={{ once: true, amount: 0.25}}
-                        whileTap={{scale: 1.3}} className='my-5 py-[8px] px-[20px] rounded-[5px] bg-black text-white cursor-pointer text-[1rem]'>
-                            <Link to='shop'>Mua ngay!</Link>
+                        whileHover={{scale: 1.2}} className='my-5 py-2 px-4 rounded-[10px] bg-black text-white cursor-pointer text-md hover:text-white'>Mua ngay
                         </motion.button>
                     </Col>
                     <Col lg='6' md='6'>
@@ -98,6 +99,11 @@ const Home = () => {
                 </Row>
             </Container>
         </section>
+
+        <section className='p-0'>
+            <img src={lightBanner} alt=''  className='scale-[2] lg:scale-150 xl:scale-100'/>
+        </section>
+
         {/* Sản phẩm nổi bật */}
         <section>
             <Container>
@@ -112,6 +118,7 @@ const Home = () => {
         <section className='bg-black mt-8'>
                 <Services/>
         </section>
+        
     </Helmet>
 }
 
