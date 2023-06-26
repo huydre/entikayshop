@@ -5,12 +5,13 @@ import {getStorage} from 'firebase/storage';
 import { getAnalytics } from "firebase/analytics";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyC61HmwS4hR_M3gjTrdeIds6WlulPTHmas",
-  authDomain: "entikayshop.firebaseapp.com",
-  projectId: "entikayshop",
-  storageBucket: "entikayshop.appspot.com",
-  messagingSenderId: "396753626537",
-  appId: "1:396753626537:web:7fbb57b6d45700aae1d0b8"
+  apiKey : "AIzaSyC61HmwS4hR_M3gjTrdeIds6WlulPTHmas" , 
+  authDomain : "entikayshop.firebaseapp.com" , 
+  projectId : "entikayshop" , 
+  storageBucket : "entikayshop.appspot.com" , 
+  messagingSenderId : "396753626537" , 
+  appId : "1:396753626537:web:7fbb57b6d45700aae1d0b8" , 
+  measurementId : "G-T75HDVLP97"
 };
 
 // Initialize Firebase
