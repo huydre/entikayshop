@@ -9,6 +9,7 @@ import { useEffect, useState } from 'react';
 import useGetData from '../custom-hooks/useGetData';
 import { useNavigate } from 'react-router-dom';
 import lightBanner from '../assets/images/light-banner.png'
+import overlayBG from '../assets/images/overlay_bg.png'
 
 const Home = () => {
     const navigate = useNavigate();
@@ -28,11 +29,12 @@ const Home = () => {
     },[products])
 
     return <Helmet title = {'Home'}>
-        <section className='bg-[#62D962] rounded-3xl m-4'>
-            <Container>
+        <section>
+            <Container className='bg-[#0D81FE] rounded-3xl p-8 relative'>
+            <img className='absolute mix-blend-color-dodge	' src={overlayBG} alt='' />
                 <Row>
                     <Col lg='6' md='6'>
-                        <motion.div
+                        {/* <motion.div
                         initial={{opacity: 0, y: 50}}
                         whileInView={{opacity: 1, y: 0, transition: {
                            type: 'spring',
@@ -42,7 +44,7 @@ const Home = () => {
                         viewport={{ once: true, amount: 0.25}}
                         >
                             <p className='text-black font-semibold bg-white rounded-2xl py-1 px-2 w-[13rem] text-center'>Sản phẩm nổi bật {year}</p>
-                        </motion.div>
+                        </motion.div> */}
                         <motion.h2
                         initial={{opacity: 0, y: 50}}
                         whileInView={{opacity: 1, y: 0, transition: {
@@ -51,8 +53,8 @@ const Home = () => {
                            delay: 0.5
                         }}}
                         viewport={{ once: true, amount: 0.25}}
-                        className='my-6 text-white text-[2.5rem] font-semibold max-[992px]:text-[2rem] max-[768px]:text-[1.rem]'>Tài khoản Spotify giá siêu rẻ !</motion.h2>
-                        <motion.p
+                        className='pl-8 pt-16 text-white text-[4rem] font-bold max-[992px]:text-[3rem] max-[768px]:text-[1.rem]'>Spotify</motion.h2>
+                        <motion.h2
                         initial={{opacity: 0, y: 50}}
                         whileInView={{opacity: 1, y: 0, transition: {
                            type: 'spring',
@@ -60,7 +62,7 @@ const Home = () => {
                            delay: 0.5
                         }}}
                         viewport={{ once: true, amount: 0.25}}
-                        className='text-white max-[768px]:text-[1rem]'>Chúng tôi cung cấp duy nhất các tài khoản Spotify giá rẻ nhất thị trường, chính chủ ở Việt Nam. Giá chỉ từ 70.000đ 4 tháng, giúp bạn tối ưu chi phí.</motion.p>
+                        className='text-white pl-8 font-bold max-[768px]:text-[1rem]'>Nghe nhạc thả ga <br></br> không lo về phí</motion.h2>
                         <motion.button
                         onClick={()=> navigate('/shop')}
                         initial={{opacity: 0, y: 50}}
@@ -70,7 +72,7 @@ const Home = () => {
                            delay: 0.5
                         }}}
                         viewport={{ once: true, amount: 0.25}}
-                        whileHover={{scale: 1.2}} className='my-5 py-2 px-4 rounded-[10px] bg-black text-white cursor-pointer text-md hover:text-white'>Mua ngay
+                        whileHover={{scale: 1.2}} className='shadow-md my-6 ml-8 py-2 px-4 rounded-[15px] bg-[#F6AB3B] font-bold text-white cursor-pointer text-md hover:text-white'>Mua ngay
                         </motion.button>
                     </Col>
                     <Col lg='6' md='6'>
@@ -82,9 +84,10 @@ const Home = () => {
                             delay: 0.5
                          }}}
                          viewport={{ once: true, amount: 0.25}}
-                           className='scale-110 max-[768px]:scale-100' src={heroImg} alt='heroimg'/>
+                           className=' max-[768px]:scale-100' src={heroImg} alt='heroimg'/>
                     </Col>
                 </Row>
+                
             </Container>
         </section>
         

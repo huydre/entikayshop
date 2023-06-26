@@ -61,13 +61,12 @@ const ProductDetails = () => {
 
     return (
         <Helmet title={productName}>
-            <CommonSection/>
 
             <section className='pt-0'>
                 <Container>
                     <Row className='pt-4'>
                         <Col lg='6' className='mt-5'>
-                            <img className='rounded-xl' src={imgUrl} alt="" />
+                            <img className='rounded-xl scale-90' src={imgUrl} alt="" />
                         </Col>
                         <Col lg='6' className='space-y-3'>
                             <div className='mt-5'>
