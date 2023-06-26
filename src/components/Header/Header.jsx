@@ -36,7 +36,7 @@ const Header = () => {
 
         signOut(auth).then(() => {
             toast.success("Đăng xuất thành công")
-            navigate('/home')
+            navigate('/')
             navigate(0)
         }).catch(err => {
             toast.error(err.message)
@@ -75,6 +75,7 @@ const Header = () => {
                     </span>
                     {/* profile */}
                     <div className='max-[768px]:hidden flex items-center'>
+                        { currentUser ?
                         <Dropdown>
                             <Dropdown.Trigger>
                                 <Avatar as='button' src = {currentUser ? currentUser.photoURL : ''} />
@@ -103,59 +104,9 @@ const Header = () => {
                                 </Dropdown.Menu>
                             }
                         </Dropdown>
-                    {/* user icon */}
-                    {/* <Popover  triggerType='menu'>
-                        <Popover.Trigger>
-                            <Avatar as='button' src = {currentUser ? currentUser.photoURL : ''} />
-                        </Popover.Trigger>
-                        <Popover.Content>
-                            {
-                                currentUser ? 
-                                <div className='p-2 flex flex-col'>
-                                    <div className='flex justify-between items-center'>
-                                        <User src={currentUser ? currentUser.photoURL : ''} name={currentUser.displayName} description={currentUser.email} size='sm' />
-                                        <div className='text-xs font-medium py-0.5 px-1 rounded-lg bg-pink-400 text-white'>Pro</div>
-                                    </div>
-
-                                    <div className='h-[1px] w-full bg-gray-200 my-2' />
-
-                                    <div className='flex space-x-2 items-center pl-3'>
-                                        <span>
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-                                            </svg>
-                                        </span>
-                                        <a href={`/user-infomation/${currentUser.uid}`} className='text-sm font-medium'>Cài đặt tài khoản</a>
-                                    </div>
-
-                                    <div className='flex space-x-2 items-center pl-3 mt-3 justify-between'>
-                                        <div className='flex space-x-2'>
-                                            <span>
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
-                                                </svg>
-                                            </span>
-                                            <span className='text-sm font-medium'>Dark mode</span>
-                                        </div>
-                                        <div>
-                                            <Switch size='sm' />
-                                        </div>
-                                    </div>
-
-                                    <div className='h-[1px] w-full bg-gray-200 my-2' />
-
-                                    <span onClick={logout} className='pl-3 text-sm font-medium text-red-500 cursor-pointer'>Đăng xuất</span> 
-                                </div>
-                                :
-                                <div className='p-3 flex flex-col text-sm font-medium'>
-                                    <a href= '/login'>Đăng nhập</a>
-                                    <div className='h-[1px] w-full bg-gray-200 my-2' />
-                                    <a href= '/signup'>Đăng kí</a>
-                                </div>
-                                
-                            }
-                        </Popover.Content>
-                    </Popover> */}
+                        :
+                        <button onClick={()=> navigate('/login')} >Đăng nhập</button>
+                        }
                     </div>
                     {/* mobile menu */}
                     <div className='hidden max-[768px]:block z-40'>

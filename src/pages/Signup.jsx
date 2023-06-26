@@ -61,7 +61,7 @@ const Signup = () => {
 
             setLoading(false);
             toast.success("Tạo tài khoản thành công!");
-            navigate('/login');
+            navigate('/home');
 
         } catch (error) {
             setLoading(false);
