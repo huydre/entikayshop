@@ -58,7 +58,20 @@ const ProductDetails = () => {
         window.scrollTo(0,0);
     },[product]);
 
-    console.log(description)
+    
+    
+    let paragraph = null;
+    let paragraphs = null;
+    if (description) {
+        paragraph = description.split("\n");
+
+        const filteredSentences = paragraph.map((sentence) => sentence.trim()) // Loại bỏ khoảng trắng dư thừa
+        .filter((sentence) => sentence !== ""); // Loại bỏ các câu trống
+
+        paragraphs = filteredSentences.map((sentence, index) => (
+            <p className='py-1' key={index}>{sentence}</p>
+        ));
+    }
     
 
     return (
@@ -113,7 +126,7 @@ const ProductDetails = () => {
 
                         {tab === 'desc' ? 
                             <div className='mt-5 leading-7'>
-                                <div>{description}</div>
+                                {paragraphs}
                             </div>:
                             <pre className='mt-5 font-semibold text-red-500'>
                                 Đang cập nhật bình luận bằng Facebook!
