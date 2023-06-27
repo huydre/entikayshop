@@ -30,13 +30,11 @@ const Home = () => {
 
     return <Helmet title = {'Home'}>
         <section>
-            {/* <div className='relative mix-blend-color-dodge z-0'>
-                    <img className='absolute' src={overlayBG} alt='' />
-            </div> */}
-            <Container className='bg-[#0D81FE] bg-gradient-to-b from-cyan-500 to-blue-500 rounded-3xl p-8 z-10'>
+            
+            <Container className='bg-[#0D81FE] bg-gradient-to-b from-cyan-500 to-blue-500 rounded-3xl p-8 z-0'>
                 
                 
-                <Row className='z-20'>
+                <Row className='z-0'>
                     <Col lg='6' md='6'>
                         <motion.h2
                         initial={{opacity: 0, y: 50}}
@@ -46,7 +44,7 @@ const Home = () => {
                            delay: 0.5
                         }}}
                         viewport={{ once: true, amount: 0.25}}
-                        className='pl-8 pt-16 text-white text-[4rem] font-bold max-[992px]:text-[3rem] max-[768px]:text-[1.rem]'>Spotify</motion.h2>
+                        className='pl-8 pt-16 text-white text-[4rem] font-bold '>Spotify</motion.h2>
                         <motion.h2
                         initial={{opacity: 0, y: 50}}
                         whileInView={{opacity: 1, y: 0, transition: {
@@ -55,7 +53,7 @@ const Home = () => {
                            delay: 0.5
                         }}}
                         viewport={{ once: true, amount: 0.25}}
-                        className='text-white pl-8 font-bold max-[768px]:text-[1rem]'>Nghe nhạc thả ga <br></br> không lo về phí</motion.h2>
+                        className='text-white pl-8 font-bold '>Nghe nhạc thả ga <br></br> không lo về phí</motion.h2>
                         <motion.button
                         initial={{opacity: 0, y: 50}}
                         whileInView={{opacity: 1, y: 0, transition: {
@@ -77,15 +75,16 @@ const Home = () => {
                             delay: 0.5
                          }}}
                          viewport={{ once: true, amount: 0.25}}
-                           className=' max-[768px]:scale-100' src={heroImg} alt='heroimg'/>
+                           className=' max-[768px]:scale-100 object-contain' src={heroImg} alt='heroimg'/>
                     </Col>
                 </Row>
             </Container>
+            
         </section>
         
         {/* Trending products */}
         <section>
-            <Container className='z-20'>
+            <Container className='z-10'>
                 <Row>
                     <Col lg='12'>
                         <h2 className='text-center text-black font-medium mb-8'>Sản phẩm bán chạy nhất</h2>
@@ -110,7 +109,7 @@ const Home = () => {
                 </Row>
             </Container>
         </section>
-        <section className='bg-black mt-8'>
+        <section className='bg-black mt-8 py-4'>
                 <Services/>
         </section>
         
