@@ -27,7 +27,6 @@ const ProductDetails = () => {
     const [tab,setTab] = useState('desc');
     const relatedProduct = products.filter(item => item.category === category);
 
-
     const docRef = doc(db,'products',id)
 
     useEffect(() => {
@@ -58,6 +57,9 @@ const ProductDetails = () => {
     useEffect(() => {
         window.scrollTo(0,0);
     },[product]);
+
+    console.log(description)
+    
 
     return (
         <Helmet title={productName}>
@@ -111,11 +113,11 @@ const ProductDetails = () => {
 
                         {tab === 'desc' ? 
                             <div className='mt-5 leading-7'>
-                                <p>{description}</p>
+                                <div>{description}</div>
                             </div>:
-                            <div className='mt-5 font-semibold text-red-500'>
+                            <pre className='mt-5 font-semibold text-red-500'>
                                 Đang cập nhật bình luận bằng Facebook!
-                            </div>
+                            </pre>
                         }
 
                         </Col>

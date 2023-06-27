@@ -94,8 +94,8 @@ const Home = () => {
             </Container>
         </section>
 
-        <section className='p-0'>
-            <img src={lightBanner} alt=''  className='scale-[2] lg:scale-150 xl:scale-100'/>
+        <section className='py-8 overflow-hidden'>
+            <img src={lightBanner} alt=''  className='scale-[2] lg:scale-150 xl:scale-100 bg-cover'/>
         </section>
 
         {/* Sản phẩm nổi bật */}

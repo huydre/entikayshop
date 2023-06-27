@@ -81,7 +81,7 @@ const saveChange = async(e) => {
           price: product.price,
           category:  product.category.currentKey ? product.category.currentKey : product.category ,
           status: product.status,
-          imgUrl: downloadURL
+          imgUrl: product.imgUrl.preview ? downloadURL : product.imgUrl,
         })
       })
     })
