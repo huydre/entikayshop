@@ -51,7 +51,7 @@ const Header = () => {
     const carts = useSelector(state => state.cart); // Lấy giỏ hàng từ redux
 
     useEffect(()=> {
-        saveCartToFirestore(currentUser.uid, carts)
+        if (currentUser) saveCartToFirestore(currentUser.uid, carts)
     },[carts])
 
     useEffect(() => {
