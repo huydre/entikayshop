@@ -53,7 +53,7 @@ const Home = () => {
                            delay: 0.5
                         }}}
                         viewport={{ once: true, amount: 0.25}}
-                        className='text-white pl-8 font-bold '>Nghe nhạc thả ga <br></br> không lo về phí</motion.h2>
+                        className='text-white pl-8 font-bold '>Nghe nhạc thả ga <br></br> không lo về giá</motion.h2>
                         <motion.button
                         initial={{opacity: 0, y: 50}}
                         whileInView={{opacity: 1, y: 0, transition: {

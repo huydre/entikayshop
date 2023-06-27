@@ -1,14 +1,17 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import useAuth from '../../custom-hooks/useAuth';
 import { Popover, Switch, User, Button, Avatar, Dropdown } from '@nextui-org/react';
 import { signOut } from 'firebase/auth';
 import { auth } from '../../firebase.config';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
-
-
+import { db, storage } from '../../firebase.config'
+import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage'
+import { collection, getDoc, setDoc, doc } from 'firebase/firestore'
+import { saveCartToFirestore } from '../../custom-hooks/firebaseUtils';
+import { cartActions } from '../../redux/slices/cartSlice';
 
 const nav__links = [
     {
@@ -26,6 +29,7 @@ const nav__links = [
 ]
 
 const Header = () => {
+    const dispatch = useDispatch();
     const navigate = useNavigate()
     const totalQuantity = useSelector(state => state.cart.totalQuantity);
     const {currentUser} = useAuth()
@@ -43,6 +47,32 @@ const Header = () => {
         })
 
     }
+
+    const carts = useSelector(state => state.cart); // Lấy giỏ hàng từ redux
+
+    useEffect(()=> {
+        saveCartToFirestore(currentUser.uid, carts)
+    },[carts])
+
+    useEffect(() => {
+        const fetchCartFromFirestore = async () => {
+          try {
+            const cartSnapshot = await getDoc(doc(db, "carts", currentUser.uid));
+            const cartData = cartSnapshot.exists() ? cartSnapshot.data() : null;
+
+            // Cập nhật giỏ hàng trong Redux
+            dispatch(cartActions.updateCart(cartData));
+            console.log(cartData)
+          } catch (error) {
+            console.error('Failed to fetch cart data from Firestore:', error);
+          }
+        };
+    
+        fetchCartFromFirestore();
+      }, [currentUser]);
+
+    
+
     return (
         <div class='w-full  h-[70px] leading-[70px] sticky top-0 left-0 z-10 shadow-xl bg-white'>
             <div class='flex items-center justify-around pt-2 max-[768px]:justify-between max-[768px]:px-6'>

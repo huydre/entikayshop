@@ -2,17 +2,15 @@ import React, {useEffect, useState} from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import { useParams } from 'react-router-dom';
 import Helmet from '../components/Helmet/Helmet';
-import CommonSection from '../components/UI/CommonSection';
 import { Button } from '@nextui-org/react';
 import ProductsList from '../components/UI/ProductsList';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { cartActions } from '../redux/slices/cartSlice';
 import { toast } from 'react-toastify';
 import { db } from '../firebase.config';
 import { doc, getDoc } from 'firebase/firestore';
 import useGetData from '../custom-hooks/useGetData';
 import { useNavigate } from 'react-router-dom';
-
 
 const ProductDetails = () => {
     const navigate = useNavigate();
@@ -42,7 +40,6 @@ const ProductDetails = () => {
         }
         getProduct()
     },[id])
-
 
     const addToCart = () => {
         dispatch(cartActions.addItem({

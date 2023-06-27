@@ -55,13 +55,14 @@ const Signup = () => {
                         phonenumber,
                         createdDate: Date.now(),
                         photoURL: downloadUrl,
+                        cart: {},
                     });
                 });
             });
 
             setLoading(false);
             toast.success("Tạo tài khoản thành công!");
-            navigate('/home');
+            navigate('/login');
 
         } catch (error) {
             setLoading(false);
