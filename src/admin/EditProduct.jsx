@@ -106,13 +106,16 @@ const saveChange = async(e) => {
           <Col lg='6'>
             
               <FormGroup>
-                <Input required value={product.productName} onChange={(e) => {setProduct((oldState)=>{return{...oldState, productName: e.target.value}})}} fullWidth label='Tên sản phẩm' type='text' placeholder='Tên sản phẩm' />
+                <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900">Tên sản phẩm</label>
+                <input required value={product.productName} onChange={(e) => {setProduct((oldState)=>{return{...oldState, productName: e.target.value}})}} type='text' placeholder='Tên sản phẩm' class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"/>
               </FormGroup>
               <FormGroup>
-                <Input required value={product.shortDesc} onChange={(e) => {setProduct((oldState)=>{return{...oldState, shortDesc: e.target.value}})}} fullWidth label='Mô tả ngắn gọn' type='text' placeholder='Nhập mô tả ngắn gọn' />
+              <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900">Mô tả ngắn gọn</label>
+                <input required value={product.shortDesc} onChange={(e) => {setProduct((oldState)=>{return{...oldState, shortDesc: e.target.value}})}} type='text' placeholder='Nhập mô tả ngắn gọn' class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"/>
               </FormGroup>
               <FormGroup>
-                <Textarea minRows='6' value={product.description} onChange={(e) => {setProduct((oldState)=>{return{...oldState, description: e.target.value}})}} fullWidth label='Mô tả chi tiết' type='text' placeholder='Nhập mô tả' />
+                <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900">Mô tả chi tiết</label>
+                <textarea rows='12' value={product.description} onChange={(e) => {setProduct((oldState)=>{return{...oldState, description: e.target.value}})}} type='text' placeholder='Nhập mô tả' class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"/>
               </FormGroup>
 
               <div className='flex space-x-12 items-center'>
@@ -121,13 +124,6 @@ const saveChange = async(e) => {
                 </FormGroup>
                 <FormGroup className='w-1/2 flex flex-col space-y-2'>
                   <span className='text-sm text-black'>Chọn danh mục</span>
-                  {/* <select required value={enterCategory} onChange={(e) => {setEnterCategory(e.target.value)}} className='bg-gray-100 rounded-xl h-10'>
-                    <option>Chọn danh mục sản phẩm</option>
-                    <option value='entertainment' >Giải trí</option>
-                    <option value='work' >Làm việc</option>
-                    <option value='learn' >Học tập</option>
-                    <option value='other' >Khác</option>
-                  </select> */}
                   <Dropdown>
                     <Dropdown.Button>{product.category}</Dropdown.Button>
                     <Dropdown.Menu selectionMode="single" selectedKeys={product.category} disallowEmptySelection aria-label='' onSelectionChange={(e) => {setProduct((oldState)=>{return{...oldState, category: e}})}}>
