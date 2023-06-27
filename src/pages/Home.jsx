@@ -30,21 +30,14 @@ const Home = () => {
 
     return <Helmet title = {'Home'}>
         <section>
-            <Container className='bg-[#0D81FE] rounded-3xl p-8 relative'>
-            <img className='absolute mix-blend-color-dodge	' src={overlayBG} alt='' />
-                <Row>
+            {/* <div className='relative mix-blend-color-dodge z-0'>
+                    <img className='absolute' src={overlayBG} alt='' />
+            </div> */}
+            <Container className='bg-[#0D81FE] bg-gradient-to-b from-cyan-500 to-blue-500 rounded-3xl p-8 z-10'>
+                
+                
+                <Row className='z-20'>
                     <Col lg='6' md='6'>
-                        {/* <motion.div
-                        initial={{opacity: 0, y: 50}}
-                        whileInView={{opacity: 1, y: 0, transition: {
-                           type: 'spring',
-                           duration: 1.25,
-                           delay: 0.5
-                        }}}
-                        viewport={{ once: true, amount: 0.25}}
-                        >
-                            <p className='text-black font-semibold bg-white rounded-2xl py-1 px-2 w-[13rem] text-center'>Sản phẩm nổi bật {year}</p>
-                        </motion.div> */}
                         <motion.h2
                         initial={{opacity: 0, y: 50}}
                         whileInView={{opacity: 1, y: 0, transition: {
@@ -64,7 +57,6 @@ const Home = () => {
                         viewport={{ once: true, amount: 0.25}}
                         className='text-white pl-8 font-bold max-[768px]:text-[1rem]'>Nghe nhạc thả ga <br></br> không lo về phí</motion.h2>
                         <motion.button
-                        onClick={()=> navigate('/shop')}
                         initial={{opacity: 0, y: 50}}
                         whileInView={{opacity: 1, y: 0, transition: {
                            type: 'spring',
@@ -72,7 +64,8 @@ const Home = () => {
                            delay: 0.5
                         }}}
                         viewport={{ once: true, amount: 0.25}}
-                        whileHover={{scale: 1.2}} className='shadow-md my-6 ml-8 py-2 px-4 rounded-[15px] bg-[#F6AB3B] font-bold text-white cursor-pointer text-md hover:text-white'>Mua ngay
+                        onClick={()=> navigate('/shop')}
+                        className='shadow-md my-6 ml-8 py-2 px-4 rounded-[15px] bg-[#F6AB3B] font-bold text-white cursor-pointer text-md hover:text-white z-20'>Mua ngay
                         </motion.button>
                     </Col>
                     <Col lg='6' md='6'>
@@ -87,13 +80,12 @@ const Home = () => {
                            className=' max-[768px]:scale-100' src={heroImg} alt='heroimg'/>
                     </Col>
                 </Row>
-                
             </Container>
         </section>
         
         {/* Trending products */}
         <section>
-            <Container>
+            <Container className='z-20'>
                 <Row>
                     <Col lg='12'>
                         <h2 className='text-center text-black font-medium mb-8'>Sản phẩm bán chạy nhất</h2>
