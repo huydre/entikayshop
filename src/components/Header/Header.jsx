@@ -62,7 +62,6 @@ const Header = () => {
 
             // Cập nhật giỏ hàng trong Redux
             dispatch(cartActions.updateCart(cartData));
-            console.log(cartData)
           } catch (error) {
             console.error('Failed to fetch cart data from Firestore:', error);
           }

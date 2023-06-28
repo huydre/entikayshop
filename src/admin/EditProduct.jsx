@@ -119,9 +119,11 @@ const saveChange = async(e) => {
               </FormGroup>
 
               <div className='flex space-x-12 items-center'>
+
                 <FormGroup className='w-1/2'>
                   <Input required value={product.price} onChange={(e) => {setProduct((oldState)=>{return{...oldState, price: e.target.value}})}} fullWidth label='Giá sản phẩm' type='number' placeholder='100.000' />
                 </FormGroup>
+
                 <FormGroup className='w-1/2 flex flex-col space-y-2'>
                   <span className='text-sm text-black'>Chọn danh mục</span>
                   <Dropdown>
@@ -134,6 +136,7 @@ const saveChange = async(e) => {
                     </Dropdown.Menu>
                   </Dropdown>
                 </FormGroup>
+                
               </div>
           </Col>
           <Col lg='6' className='flex justify-start md:justify-center'>
