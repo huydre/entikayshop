@@ -10,6 +10,8 @@ import { updateProfile } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 
 const UserInfomation = () => {
+    const [isUploadFile,setIsUploadFile] = useState("false");
+
   const navigate = useNavigate();
 
   const { currentUser } = useAuth();
@@ -35,44 +37,56 @@ const UserInfomation = () => {
     setUserInformation((oldState) => {
       return { ...oldState, imgUrl: file };
     });
+    setIsUploadFile(true);
   };
 
   const handleSave = async (e) => {
     e.preventDefault();
-    try {
-      const storageRef = ref(storage, `images/${Date.now() + currentUser.uid}`);
-      const uploadTask = uploadBytesResumable(
-        storageRef,
-        userInfomation.imgUrl
-      );
-
-      uploadTask.on(
-        () => {
-          toast.error("Không thể upload hình ảnh!");
-        },
-        () => {
-          getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
-            // update thông tin vào database
-            await updateDoc(doc(db, "users", currentUser.uid), {
-              photoURL: userInfomation.imgUrl.preview
-                ? downloadURL
-                : userInfomation.imgUrl,
-              phoneNumber: userInfomation.phoneNumber,
-              fullname: userInfomation.fullname,
-              IDCard: userInfomation.IDCard,
-              gender: userInfomation.gender,
-            });
-            // update thông tin vào auth
-            await updateProfile(currentUser, {
-              photoURL: userInfomation.imgUrl.preview
-                ? downloadURL
-                : userInfomation.imgUrl,
-            });
-            await navigate(0);
-          });
+    try {  
+        if (isUploadFile === true) {
+            console.log("Update with image!")
+            const storageRef = ref(storage, `images/${Date.now() + currentUser.uid}`);
+            const uploadTask = uploadBytesResumable(
+                storageRef,
+                userInfomation.imgUrl
+            );
+            uploadTask.on(
+                () => {
+                toast.error("Không thể upload hình ảnh!");
+                },
+                () => {
+                getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
+                    // update thông tin vào database
+                    await updateDoc(doc(db, "users", currentUser.uid), {
+                    photoURL: userInfomation.imgUrl.preview
+                        ? downloadURL
+                        : userInfomation.imgUrl,
+                    phoneNumber: userInfomation.phoneNumber,
+                    fullname: userInfomation.fullname,
+                    IDCard: userInfomation.IDCard,
+                    gender: userInfomation.gender,
+                    });
+                    // update thông tin vào auth
+                    await updateProfile(currentUser, {
+                    photoURL: userInfomation.imgUrl.preview
+                        ? downloadURL
+                        : userInfomation.imgUrl,
+                    });
+                    await navigate(0);
+                });
+                }
+            );
         }
-      );
-      toast.success("Chỉnh sửa thông tin cá nhân thành công!");
+        else {
+            updateDoc(doc(db, "users", currentUser.uid), {
+                phoneNumber: userInfomation.phoneNumber,
+                fullname: userInfomation.fullname,
+                IDCard: userInfomation.IDCard,
+                gender: userInfomation.gender,
+                });
+            await navigate(0);
+        }
+        toast.success("Chỉnh sửa thông tin cá nhân thành công!");
     } catch (err) {
       toast.error(err.message);
     }
