@@ -11,7 +11,7 @@ const Shop = () => {
 
     const navigate = useNavigate();
 
-    const filterSelect = 'cursor-pointer rounded-lg bg-[#F6F6F6] px-4 py-2.5 focus:outline-0';
+    const filterSelect = 'cursor-pointer rounded-lg bg-[#F6F6F6] px-4 py-2.5 focus:outline-0 max-[768px]:w-full max-[768px]:mb-4';
     const filterOption = 'text-sm shadow block px-4 py-2 hover:bg-gray-100';
 
     const {data: products} = useGetData('products')
@@ -54,6 +54,23 @@ const Shop = () => {
         }
     }
 
+    const handleSort = (e) => {
+        const sortValue = e.target.value;
+        let sortedProducts;
+      
+        if (sortValue === "ascending") {
+          sortedProducts = [...productsData].sort((a, b) => a.price - b.price);
+        }
+        if (sortValue === "descending") {
+          sortedProducts = [...productsData].sort((a, b) => b.price - a.price);
+        }
+        if (sortValue === "default") {
+            navigate(0);
+        }
+      
+        setProductsData(sortedProducts);
+      };
+
     const handleSearch = e => {
         const searchTerm = e.target.value;
         const searchedProducts = products.filter(
@@ -62,6 +79,7 @@ const Shop = () => {
         setProductsData(searchedProducts)
     }
 
+    console.log(productsData);
     return (
         <Helmet title='Shop'>
             <CommonSection title='Products'/>
@@ -83,8 +101,8 @@ const Shop = () => {
                         </Col>
                         <Col lg='3' md='6' className='max-[768px]:text-end max-[768px]:text-sm'>
                             <div>
-                                <select className={filterSelect}>
-                                    <option className={filterOption}>Sắp xếp theo</option>
+                                <select className={filterSelect} onChange={handleSort}>
+                                    <option value="default" className={filterOption}>Sắp xếp theo</option>
                                     <option className={filterOption} value="ascending">Giá từ thấp đến cao</option>
                                     <option className={filterOption} value="descending">Giá từ cao đến thấp</option>
                                 </select>
