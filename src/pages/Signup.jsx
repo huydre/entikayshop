@@ -7,9 +7,7 @@ import loginWoman from '../assets/images/login-woman.png';
 import bgLight from '../assets/images/light-bg.png';
 import { setDoc, doc } from 'firebase/firestore';
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import {auth} from '../firebase.config'
-import { storage } from '../firebase.config';
 import { db } from '../firebase.config';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
@@ -22,10 +20,8 @@ const Signup = () => {
     const [phonenumber,setPhonenumber] = useState("");
     const [email,setEmail] = useState("");
     const [password,setPassword] = useState("");
-    const [file, setFile] = useState(null);
     const [loading, setLoading] = useState(false);
 
-    console.log(file)
     const signups = async(e) => {
         e.preventDefault()
         setLoading(true)
@@ -35,34 +31,26 @@ const Signup = () => {
             
             const user = userCredential.user;
 
-            const storageRef = ref(storage, `images/${Date.now() + username}`)
-            const uploadTask = uploadBytesResumable(storageRef, file)
+            const PhotoURL = "https://firebasestorage.googleapis.com/v0/b/entikayshop.appspot.com/o/images%2FDefault_avt.jpg?alt=media&token=47263799-7bb7-49c4-809b-32aa5b8359cd";
 
-            uploadTask.on((error) => {
-                toast.error(error.message)
-            }, () => {
-                getDownloadURL(uploadTask.snapshot.ref).then(async(downloadUrl) => {
-                    //update user profile
-                    await updateProfile(user, {
-                        displayName: username,
-                        photoURL: downloadUrl,
-                    });
-                    // store user data in firestore database
-                    await setDoc(doc(db,"users",user.uid), {
-                        uid: user.uid,
-                        displayName: username,
-                        email,
-                        phonenumber,
-                        createdDate: Date.now(),
-                        photoURL: downloadUrl,
-                        cart: {},
-                    });
-                });
+            //update user profile
+            await updateProfile(user, {
+                displayName: username,
+                photoURL: PhotoURL,
             });
 
+            // store user data in firestore database
+            await setDoc(doc(db,"users",user.uid), {
+                uid: user.uid,
+                displayName: username,
+                email,
+                phonenumber,
+                createdDate: Date.now(),
+                photoURL: PhotoURL,
+            });
             setLoading(false);
             toast.success("Tạo tài khoản thành công!");
-            navigate('/login');
+            navigate('/home');
 
         } catch (error) {
             setLoading(false);
@@ -101,7 +89,6 @@ const Signup = () => {
                                 <FormGroup>
                                     <Input.Password label='Mật khẩu' onChange={(e) => {setPassword(e.target.value)}} aria-label='password' fullWidth clearable type='password'  placeholder='Mật khẩu'/>
                                 </FormGroup>
-                                <input required type='file' onChange={(e) => {setFile(e.target.files[0])}}/>
                                 <div>
                                     <button type='submit' className='bg-black text-sm py-3 shadow-lg rounded-lg w-full text-white font-semibold focus:bg-slate-400'>Đăng kí</button>
                                 </div>
