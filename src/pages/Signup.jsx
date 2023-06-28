@@ -37,6 +37,7 @@ const Signup = () => {
             await updateProfile(user, {
                 displayName: username,
                 photoURL: PhotoURL,
+                phoneNumber: phonenumber,
             });
 
             // store user data in firestore database
@@ -56,7 +57,6 @@ const Signup = () => {
             setLoading(false);
             toast.error('Đăng kí thất bại!')
         }
-
     }
 
     return (

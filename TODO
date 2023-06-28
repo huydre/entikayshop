@@ -1,6 +1,16 @@
 
+//Thêm phần footer
+
+//cỉnh lại z-index của add to cart trên mobile screen
+
 //Thêm sort theo giá tiền
 
+//Thêm phần chỉnh sửa hình ảnh trong chỉnh sửa thông tin cá nhân
+
 //responsive
+
+// thêm skeleton
+
+// thêm darkmode
 
 // Thêm chức năng thanh toán bằng MOMO, VNPAY

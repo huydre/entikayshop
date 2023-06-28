@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
+import { Divider } from '@nextui-org/react';
 
 const Footer = () => {
     return (
@@ -7,27 +8,30 @@ const Footer = () => {
             <Container className='px-0 py-8'>
                 <Row>
                     <Col lg ='4'>
-                        <div className='flex items-center gap-[8px] cursor-pointer my-3'>
+                        <div className='flex items-center cursor-pointer my-4'>
                             <div>
-                                <h1 class='font-bold text-[1.2rem] text-[var(--primary-color)]'>Entikay__</h1>
+                                <h1 class='font-bold text-[1.6rem] text-[var(--primary-color)]'>Entikay</h1>
                             </div>
                             
                         </div>
                     </Col>
-                    <Col lg ='3'>
-                        <h4 className='text-lg font-semibold my-3'>ABOUT US</h4>
+                    <Col lg ='2' className='flex items-center cursor-pointer'>
+                        <h4 className='text-md my-3 font-normal transition-colors hover:text-blue-500 focus:text-blue-500'>About Us</h4>
                     
                     </Col>
-                    <Col lg ='2'>
-                        <h4 className='text-lg font-semibold my-3'>SUPPORT</h4>
+                    <Col lg ='2' className='flex items-center cursor-pointer'>
+                        <h4 className='text-md font-normal transition-colors hover:text-blue-500 focus:text-blue-500 my-3'>License</h4>
                         
                     </Col>
-                    <Col lg ='3'>
-                        <h4 className='text-lg font-semibold my-3'>LEGAL</h4>
-                        
+                    <Col lg ='2' className='flex items-center cursor-pointer'>
+                        <h4 className='text-md font-normal transition-colors hover:text-blue-500 focus:text-blue-500 my-3'>Contribute</h4>
+                    </Col>
+                    <Col lg ='2' className='flex items-center cursor-pointer'>
+                        <h4 className='text-md font-normal transition-colors hover:text-blue-500 focus:text-blue-500 my-3'>Contact Us</h4>
                     </Col>
                 </Row>
-                <section className='pb-1 pt-3 mt-4 text-center text-sm'>Copyright 2023 developed by Hai Nam.All rights reserved.</section>
+                <Divider/>
+                <section className='pb-1 pt-3 mt-4 text-center text-sm'>© 2023 Hai Nam</section>
             </Container>
         </footer>
     );

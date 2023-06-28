@@ -15,7 +15,6 @@ const Home = () => {
     const navigate = useNavigate();
     const [trendingProducts,setTrendingProducts] = useState([]);
     const [bestSaleProducts,setBestSaleProducts] = useState([]);
-    const year = new Date().getFullYear();
 
     const {data: products} = useGetData('products')
 

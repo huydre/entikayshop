@@ -70,7 +70,6 @@ const Header = () => {
     
         fetchCartFromFirestore();
       }, [currentUser]);
-
     
 
     return (
