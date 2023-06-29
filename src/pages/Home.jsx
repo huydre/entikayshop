@@ -29,7 +29,7 @@ const Home = () => {
     },[products])
 
     return <Helmet title = {'Home'}>
-        <section>
+        <section className='pt-4'>
             {/* banner left */}
             <div className='fixed left-5 w-[14rem] top-1/4 z-20 max-[1810px]:hidden'>
                     <img src={banner1} alt='' />
@@ -38,7 +38,7 @@ const Home = () => {
             <div className='fixed right-5 w-[14rem] top-1/4 z-20 max-[1810px]:hidden'>
                     <img src={banner2} alt='' />
             </div>
-            <Container className="bg-[#0D81FE] bg-gradient-to-b from-cyan-500 to-blue-500 rounded-3xl p-10 z-0 bg-center bg-cover">
+            <Container className="bg-[#0D81FE] bg-[url('https://firebasestorage.googleapis.com/v0/b/entikayshop.appspot.com/o/images%2Foverlay_ng.png?alt=media&token=2629f9d9-6c81-426c-b079-1eee05218a08')] rounded-3xl p-10 z-0 bg-center bg-cover">
                 
                 
                 <Row className='z-0'>
@@ -79,11 +79,11 @@ const Home = () => {
                         }}}
                         viewport={{ once: true, amount: 0.25}}
                         onClick={()=> navigate('/shop')}
-                        className='shadow-md my-6 ml-8 py-2 px-4 rounded-[15px] bg-[#F6AB3B] font-bold text-white cursor-pointer text-md hover:text-white z-20'>Khám phá ngay
+                        className='shadow-xl my-6 ml-8 py-2 px-4 rounded-[15px] bg-[#F6AB3B] font-bold text-white cursor-pointer text-md hover:text-white z-20  '>Khám phá ngay
                         </motion.button>
                     </Col>
                     <Col lg='6' md='6'>
-                        <motion.img 
+                        {/* <motion.img 
                         initial={{opacity: 0, y: 50}}
                          whileInView={{opacity: 1, y: 0, transition: {
                             type: 'spring',
@@ -91,7 +91,8 @@ const Home = () => {
                             delay: 0.5
                          }}}
                          viewport={{ once: true, amount: 0.25}}
-                           className=' ' src={heroImg} alt='heroimg'/>
+                           className='scale-125' src={heroImg} alt='heroimg'/> */}
+                           <img className='scale-125 xl:scale-150 lg:translate-x-10 lg:translate-y-3 md:translate-y-14' src={heroImg} alt='heroimg' />    
                     </Col>
                 </Row>
             </Container>
