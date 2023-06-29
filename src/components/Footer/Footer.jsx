@@ -5,34 +5,24 @@ import { Divider } from '@nextui-org/react';
 const Footer = () => {
     return (
         <footer className='bg-[#F3F4F6]'>
-            <Container className='px-0 py-8'>
-                <Row>
-                    <Col lg ='4'>
-                        <div className='flex items-center cursor-pointer my-4'>
-                            <div>
-                                <h1 class='font-bold text-[1.6rem] text-[var(--primary-color)]'>Entikay</h1>
-                            </div>
-                            
-                        </div>
-                    </Col>
-                    <Col lg ='2' className='flex items-center cursor-pointer'>
-                        <h4 className='text-md my-3 font-normal transition-colors hover:text-blue-500 focus:text-blue-500'>About Us</h4>
-                    
-                    </Col>
-                    <Col lg ='2' className='flex items-center cursor-pointer'>
-                        <h4 className='text-md font-normal transition-colors hover:text-blue-500 focus:text-blue-500 my-3'>License</h4>
-                        
-                    </Col>
-                    <Col lg ='2' className='flex items-center cursor-pointer'>
-                        <h4 className='text-md font-normal transition-colors hover:text-blue-500 focus:text-blue-500 my-3'>Contribute</h4>
-                    </Col>
-                    <Col lg ='2' className='flex items-center cursor-pointer'>
-                        <h4 className='text-md font-normal transition-colors hover:text-blue-500 focus:text-blue-500 my-3'>Contact Us</h4>
-                    </Col>
-                </Row>
-                <Divider/>
-                <section className='pb-1 pt-3 mt-4 text-center text-sm'>© 2023 Hai Nam</section>
-            </Container>
+            <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
+                <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="https://flowbite.com/" class="hover:underline">Hai Nam™</a>. All Rights Reserved.
+                </span>
+                <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
+                    <li>
+                        <a href="#" class="mr-4 hover:underline md:mr-6 ">About</a>
+                    </li>
+                    <li>
+                        <a href="#" class="mr-4 hover:underline md:mr-6">Privacy Policy</a>
+                    </li>
+                    <li>
+                        <a href="#" class="mr-4 hover:underline md:mr-6">Licensing</a>
+                    </li>
+                    <li>
+                        <a href="#" class="hover:underline">Contact</a>
+                    </li>
+                </ul>
+                </div>
         </footer>
     );
 };
