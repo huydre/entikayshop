@@ -31,11 +31,11 @@ const Home = () => {
     return <Helmet title = {'Home'}>
         <section>
             {/* banner left */}
-            <div className='fixed left-3 w-[15rem] top-1/4 z-20 max-[1810px]:hidden'>
+            <div className='fixed left-5 w-[14rem] top-1/4 z-20 max-[1810px]:hidden'>
                     <img src={banner1} alt='' />
             </div>
             {/* banner right */}
-            <div className='fixed right-3 w-[15rem] top-1/4 z-20 max-[1810px]:hidden'>
+            <div className='fixed right-5 w-[14rem] top-1/4 z-20 max-[1810px]:hidden'>
                     <img src={banner2} alt='' />
             </div>
             <Container className='bg-[#0D81FE] bg-gradient-to-b from-cyan-500 to-blue-500 rounded-3xl p-8 z-0'>
