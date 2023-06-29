@@ -38,7 +38,7 @@ const Home = () => {
             <div className='fixed right-5 w-[14rem] top-1/4 z-20 max-[1810px]:hidden'>
                     <img src={banner2} alt='' />
             </div>
-            <Container className='bg-[#0D81FE] bg-gradient-to-b from-cyan-500 to-blue-500 rounded-3xl p-8 z-0'>
+            <Container className="bg-[#0D81FE] bg-gradient-to-b from-cyan-500 to-blue-500 rounded-3xl p-10 z-0 bg-center bg-cover">
                 
                 
                 <Row className='z-0'>
@@ -51,7 +51,7 @@ const Home = () => {
                            delay: 0.5
                         }}}
                         viewport={{ once: true, amount: 0.25}}
-                        className='pl-8 pt-16 text-white text-[4rem] font-bold '>Spotify</motion.h2>
+                        className='pl-8 pt-16 text-white text-[4rem] font-bold '>Entikay</motion.h2>
                         <motion.h2
                         initial={{opacity: 0, y: 50}}
                         whileInView={{opacity: 1, y: 0, transition: {
@@ -60,7 +60,16 @@ const Home = () => {
                            delay: 0.5
                         }}}
                         viewport={{ once: true, amount: 0.25}}
-                        className='text-white pl-8 font-bold '>Nghe nhạc thả ga <br></br> không lo về giá</motion.h2>
+                        className='text-white pl-8 font-bold '>Có tất cả mọi thứ bạn cần!</motion.h2>
+                        <motion.p
+                        initial={{opacity: 0, y: 50}}
+                        whileInView={{opacity: 1, y: 0, transition: {
+                           type: 'spring',
+                           duration: 1.25,
+                           delay: 0.5
+                        }}}
+                        viewport={{ once: true, amount: 0.25}}
+                        className='text-white pl-8 pt-4'>Trải nghiệm tuyệt vời, giá trị vô cùng - Đặt ngay tài khoản Netflix, Spotify và nhiều hơn nữa!</motion.p>
                         <motion.button
                         initial={{opacity: 0, y: 50}}
                         whileInView={{opacity: 1, y: 0, transition: {
@@ -70,7 +79,7 @@ const Home = () => {
                         }}}
                         viewport={{ once: true, amount: 0.25}}
                         onClick={()=> navigate('/shop')}
-                        className='shadow-md my-6 ml-8 py-2 px-4 rounded-[15px] bg-[#F6AB3B] font-bold text-white cursor-pointer text-md hover:text-white z-20'>Mua ngay
+                        className='shadow-md my-6 ml-8 py-2 px-4 rounded-[15px] bg-[#F6AB3B] font-bold text-white cursor-pointer text-md hover:text-white z-20'>Khám phá ngay
                         </motion.button>
                     </Col>
                     <Col lg='6' md='6'>
@@ -82,7 +91,7 @@ const Home = () => {
                             delay: 0.5
                          }}}
                          viewport={{ once: true, amount: 0.25}}
-                           className=' max-[768px]:scale-100 object-contain' src={heroImg} alt='heroimg'/>
+                           className=' ' src={heroImg} alt='heroimg'/>
                     </Col>
                 </Row>
             </Container>

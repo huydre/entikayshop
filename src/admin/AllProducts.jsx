@@ -37,7 +37,7 @@ const AllProducts = () => {
               );
           case "productName": 
               return (
-                  <div>{cellValue}</div>
+                  <div className='truncate w-[30rem]'>{cellValue}</div>
               );
           case "price":
               return (
@@ -113,7 +113,12 @@ const AllProducts = () => {
                                             </Table.Row>
                                         )}
                                 </Table.Body>
-
+                                <Table.Pagination
+                                    shadow
+                                    noMargin
+                                    align="center"
+                                    rowsPerPage={6}
+                                />
                             </Table>
                         </Col>
                         <Col lg='3'></Col>

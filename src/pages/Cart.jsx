@@ -8,7 +8,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { cartActions } from '../redux/slices/cartSlice';
 import { Link } from 'react-router-dom';
 
-
 const Cart = () => {
 
     const dispath = useDispatch()
@@ -44,7 +43,9 @@ const Cart = () => {
                 );
             case "productName":
                 return (
-                    <Link to={`/shop/${product.id}`} className='truncate w-[400px]'>{cellValue}</Link>
+                    <div className='truncate w-[25rem]'>
+                        <Link to={`/shop/${product.id}`}>{cellValue}</Link>
+                    </div>
                 );
             case "price":
                 return (
@@ -89,8 +90,6 @@ const Cart = () => {
         }
     };
 
-    console.log(totalAmount)
-
     return (
         <Helmet title='Cart'>
             <CommonSection title={'Giỏ hàng của tôi'}/>
@@ -117,7 +116,7 @@ const Cart = () => {
                                             </Table.Row>
                                         )}
                                 </Table.Body>
-
+                                
                             </Table>
                         </Col>
                         <Col lg='3'>
