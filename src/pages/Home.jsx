@@ -11,13 +11,14 @@ import { useNavigate } from 'react-router-dom';
 import lightBanner from '../assets/images/light-banner.png';
 import banner1 from '../assets/images/banner_1.png'
 import banner2 from '../assets/images/banner_2.png'
+import { Loading } from '@nextui-org/react';
 
 const Home = () => {
     const navigate = useNavigate();
     const [trendingProducts,setTrendingProducts] = useState([]);
     const [bestSaleProducts,setBestSaleProducts] = useState([]);
 
-    const {data: products} = useGetData('products')
+    const {data: products, loading: isLoading} = useGetData('products')
 
     useEffect(()=> {
         const filteredTrendingProducts = products.filter(item=> item.category === 'entertainment');
@@ -27,6 +28,8 @@ const Home = () => {
         setBestSaleProducts(filteredBestSaleProducts);
 
     },[products])
+
+    // console.log("data: ",products,"loading: ",isLoading)
 
     return <Helmet title = {'Home'}>
         <section className='pt-4'>
@@ -83,15 +86,6 @@ const Home = () => {
                         </motion.button>
                     </Col>
                     <Col lg='6' md='6'>
-                        {/* <motion.img 
-                        initial={{opacity: 0, y: 50}}
-                         whileInView={{opacity: 1, y: 0, transition: {
-                            type: 'spring',
-                            duration: 1.25,
-                            delay: 0.5
-                         }}}
-                         viewport={{ once: true, amount: 0.25}}
-                           className='scale-125' src={heroImg} alt='heroimg'/> */}
                            <img className='scale-125 xl:scale-150 lg:translate-x-10 lg:translate-y-3 md:translate-y-14' src={heroImg} alt='heroimg' />    
                     </Col>
                 </Row>
@@ -106,7 +100,12 @@ const Home = () => {
                     <Col lg='12'>
                         <h2 className='text-center text-black font-medium mb-8'>Sản phẩm bán chạy nhất</h2>
                     </Col>
-                    <ProductsList data = {trendingProducts}/>
+                    {
+                        isLoading ?
+                        <Loading>Loading</Loading>
+                        :
+                        <ProductsList data = {trendingProducts}/>
+                    }
                 </Row>
             </Container>
         </section>
@@ -122,7 +121,12 @@ const Home = () => {
                     <Col lg='12'>
                         <h2 className='text-center text-black font-medium mb-8'>Sản phẩm nổi bật</h2>
                     </Col>
-                    <ProductsList data = {bestSaleProducts}/>
+                    {
+                        isLoading ?
+                        <Loading>Loading</Loading>
+                        :
+                        <ProductsList data = {bestSaleProducts}/>
+                    }
                 </Row>
             </Container>
         </section>

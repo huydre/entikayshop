@@ -14,7 +14,7 @@ const Services = () => {
                     chương trình Giới thiệu bạn bè nhận hoa hồng vĩnh viễn tại Entikay Shop.
                 </p>
                 <div className='flex items-center space-x-4 mt-4'>
-                    <Button auto shadow color="success" className='max-[768px]:text-sm'>Đăng kí ngay</Button>
+                    <Button auto color="success" className='max-[768px]:text-sm'>Đăng kí ngay</Button>
                     <div className='flex items-center space-x-2'>
                         <p className='text-sm max-[768px]:text-xs'>Hoặc bạn đã có tài khoản?</p>
                         <button className='text-sm max-[768px]:text-xs'>Đăng nhập</button>

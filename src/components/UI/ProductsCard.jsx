@@ -2,28 +2,12 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Col } from 'reactstrap';
 import { Link } from 'react-router-dom';
-// import { useDispatch } from 'react-redux';
-// import { cartActions } from '../../redux/slices/cartSlice';
-// import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 
 const ProductsCard = ({item}) => {
 
+
     const navigate = useNavigate();
-    // const dispath = useDispatch()
-
-    // const addToCart = () => {
-    //     dispath(cartActions.addItem({
-    //         id: item.id,
-    //         productName: item.productName,
-    //         price: item.price,
-    //         imgUrl: item.imgUrl,
-    //     }));
-
-    //     toast.success('Product added succesfully!')
-
-    // }
-
     return (
         <Col lg='3' md='4' className='flex justify-center '>
             {/* Products items */}

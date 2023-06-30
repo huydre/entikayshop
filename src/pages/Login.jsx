@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import Helmet from '../components/Helmet/Helmet';
 import { Container, Row, Col, Form, FormGroup } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import { Button, Input, useInput, Loading } from '@nextui-org/react';
+import { Input, Loading } from '@nextui-org/react';
 import loginWoman from '../assets/images/login-woman.png';
 import bgLight from '../assets/images/light-bg.png'
 import { signInWithEmailAndPassword } from 'firebase/auth';

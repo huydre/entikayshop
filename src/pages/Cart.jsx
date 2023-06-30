@@ -7,6 +7,7 @@ import { DeleteIcon } from '../components/Icon/DeleteIcon';
 import { useDispatch, useSelector } from 'react-redux';
 import { cartActions } from '../redux/slices/cartSlice';
 import { Link } from 'react-router-dom';
+import emptyCart from '../assets/images/empty_cart.png'
 
 const Cart = () => {
 
@@ -27,6 +28,7 @@ const Cart = () => {
         dispath(cartActions.decreaseQuantity(id))
     }
 
+    console.log(cartItem)
     const columns = [
         { name: "Image", uid: "imgUrl" },
         { name: "Tên sản phẩm", uid: "productName" },
@@ -97,7 +99,18 @@ const Cart = () => {
                 <Container>
                     <Row>
                         <Col lg='9'>
-                            <Table className='w-full z-0'
+                            {
+                                cartItem.length === 0 ?
+                                <div>
+                                    <h1 className='text-center font-semibold text-2xl pb-2'>Giỏ hàng trống!</h1>
+                                    <p className='text-center'>Thêm sản phẩm và quay lại trang này để thanh toán nha bạn!</p>
+                                    <div className='flex justify-center'>
+                                        <img className='w-[25rem]' src={emptyCart} alt='' />
+                                    </div>
+                                    
+                                </div>
+                                :
+                                <Table className='w-full z-0'
                                     selectionMode="none">
                                 <Table.Header columns={columns}>
                                     {(column) => (
@@ -118,6 +131,7 @@ const Cart = () => {
                                 </Table.Body>
                                 
                             </Table>
+                            }
                         </Col>
                         <Col lg='3'>
                             <div className='shadow-md ring-1 ring-slate-900/5 rounded-xl space-y-6 text-sm py-6 px-2 flex flex-col max-[768px]:mt-6'>
